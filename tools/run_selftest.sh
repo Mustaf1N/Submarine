@@ -19,11 +19,12 @@ mkdir -p work/selftest
 export HOWEMINE_RAW="$PWD/work/selftest/raw"
 "$PY" edit/analyze.py --out work/selftest/analysis.json
 "$PY" edit/timeline.py --analysis work/selftest/analysis.json \
-      --time-scale "$TS" --out work/selftest/timeline.json
+      --time-scale "$TS" --target 90 --out work/selftest/timeline.json
 "$PY" edit/render.py --timeline work/selftest/timeline.json
-"$PY" edit/qc.py --timeline work/selftest/timeline.json --expect-duration 100,130 \
+"$PY" edit/qc.py --timeline work/selftest/timeline.json --expect-duration 80,110 \
       --note "**Данные синтетического self-test** (синтетические двойники записей), а не реальных исходников: подтверждают работоспособность пайплайна."
 "$PY" edit/report.py --timeline work/selftest/timeline.json \
+      --appendix docs/ПРИМЕЧАНИЕ-self-test.md \
       --note "**Данные синтетического self-test** (синтетические двойники записей), а не реальных исходников: подтверждают работоспособность пайплайна."
 
 echo

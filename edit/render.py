@@ -26,6 +26,7 @@ from cfglib import (
     CACHE,
     EDIT,
     FPS,
+    LUFS_TARGET,
     OVL,
     REPORT,
     ROOT,
@@ -51,7 +52,7 @@ FINAL = DELIVER / "HoweMine_review_1080p60.mp4"
 # без потерь для финального CRF 19, зато в 5–8 раз меньше и быстрее.
 INTERMEDIATE = ["-c:v", "libx264", "-preset", "ultrafast", "-crf", "12",
                 "-pix_fmt", "yuv420p", "-g", "120", "-threads", "2"]
-VERSION = "render-7"
+VERSION = "render-8"
 
 SOURCES = {"A": SRC_A, "B": SRC_B}
 
@@ -344,9 +345,13 @@ def build_audio(edl: dict, seg_audios: list[Path], force: bool = False,
     build_mix(total, game, edl.get("sfx", []), edl.get("duck_windows", []), mix,
               mute_windows=edl.get("music_mute_windows", []))
 
-    # цель по TP берём на 0.6 дБ ниже: AAC на энкоде добавляет ~0.6–0.8 дБ
-    # интерсэмпловых пиков, а итоговый файл должен быть ≤ −1.5 dBTP
-    norm = master(mix, AUD / "mix_norm.wav")
+    # AAC на энкоде добавляет ~0.4–0.9 дБ интерсэмпловых пиков, поэтому пик
+    # контролируется по факту «пробного» AAC (см. audio.master(..., aac_tp=...))
+    # Цель по громкости для wav берём на +0.5 LUFS выше: AAC-энкод «съедает»
+    # ~0.5 LU (интерсэмпловые пики), и в готовом файле выходит ровно −14 LUFS.
+    # aac_tp: пик подгоняем по факту пробного AAC, чтобы итог был ≤ −1.5 dBTP.
+    norm = master(mix, AUD / "mix_norm.wav", target_lufs=LUFS_TARGET + 0.5,
+                  tp=TP_TARGET - 0.15, aac_tp=TP_TARGET)
     meas = measure_loudness(AUD / "mix_norm.wav")
     save_json(REPORT / "loudness.json", {"normalize": norm, "measured_after": meas})
     log(f"[render] звук: {meas}")

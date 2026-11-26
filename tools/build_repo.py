@@ -35,12 +35,12 @@ def run(cmd, cwd=ROOT, check=True):
 
 def ensure_repo(name: str) -> str:
     """Создать приватный репозиторий (или переиспользовать), вернуть URL."""
-    res = run(["gh", "repo", "view", f"{name}", "--json", "nameWithOwner,url,visibility"], check=False)
+    res = run(["gh", "repo", "view", f"{name}", "--json", "nameWithOwner,url"], check=False)
     if res.returncode == 0:
         import json
 
         meta = json.loads(res.stdout)
-        print(f"[repo] уже существует: {meta['url']} ({meta['visibility']})")
+        print(f"[repo] уже существует: {meta['url']}")
         return meta["url"]
     for candidate in (name, f"{name}-2"):
         res = run(["gh", "repo", "create", candidate, "--private", "--description",
@@ -89,6 +89,8 @@ def main() -> int:
     ap.add_argument("--work", default="work/repo_out")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--skip-release", action="store_true")
+    ap.add_argument("--selftest", action="store_true",
+                    help="видео — синтетический self-test, а не монтаж реальных записей")
     args = ap.parse_args()
 
     dest = ROOT / args.work
@@ -111,11 +113,29 @@ def main() -> int:
     print(f"[repo] код запушен: {url}")
 
     if has_video and not args.skip_release:
-        run(["gh", "release", "create", "v1.0", str(video),
-             "--title", "HoweMine — обзор сборки (1080p60)",
-             "--notes", "Готовый ролик 1080p60, H.264 High@4.2 + AAC 256k, −14 LUFS / TP ≤ −1.5 dBTP. "
-                        "Главы и таймкоды — в README.md.", "--repo", url], cwd=ROOT)
-        print("[repo] релиз v1.0 создан")
+        if args.selftest:
+            tag = "v0.9-selftest"
+            title = "HoweMine — self-test пайплайна (1080p60)"
+            asset = ROOT / "work" / "HoweMine_selftest_1080p60.mp4"
+            shutil.copy2(video, asset)
+            notes = ("**Это НЕ финальный ролик.** Здесь проверен весь пайплайн на синтетических "
+                     "двойниках записей: анализ кадров → EDL с защищёнными окнами → рендер → "
+                     "мастеринг → QC. Финальный монтаж реальных записей появится отдельным "
+                     "релизом после прогона `bash run_all.sh`. "
+                     "Характеристики: 1920×1080@60, H.264 High@4.2 CRF 19, keyint 120, "
+                     "AAC 256k 48k, −14 LUFS, TP ≤ −1.5 dBTP.")
+            cmd = ["gh", "release", "create", tag, str(asset), "--title", title,
+                   "--notes", notes, "--repo", url]
+        else:
+            tag = "v1.0"
+            asset = video
+            cmd = ["gh", "release", "create", tag, str(asset),
+                   "--title", "HoweMine — обзор сборки (1080p60)",
+                   "--notes", "Готовый ролик 1080p60, H.264 High@4.2 + AAC 256k, "
+                              "−14 LUFS / TP ≤ −1.5 dBTP. Главы и таймкоды — в README.md.",
+                   "--repo", url]
+        run(cmd, cwd=ROOT)
+        print(f"[repo] релиз {tag} создан")
     return 0
 
 

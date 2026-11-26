@@ -582,7 +582,7 @@ def _peak_scale(path: Path, target_tp: float) -> float:
 
 def master(src: Path, dst: Path, target_lufs: float = LUFS_TARGET,
            tp: float = TP_TARGET, threshold: float = 0.03, ratio: float = 6.0,
-           makeup: float = 6.0) -> dict:
+           makeup: float = 6.0, aac_tp: float | None = None) -> dict:
     """Мастеринг микса: компрессия → two-pass loudnorm → точная подгонка пика/громкости.
 
     Почему так: у игрового микса crest factor 18–22 дБ (пики SFX выше «тела»).
@@ -619,9 +619,36 @@ def master(src: Path, dst: Path, target_lufs: float = LUFS_TARGET,
     cur.replace(dst)
     for leftover in dst.parent.glob(dst.stem + ".step*.wav"):
         leftover.unlink(missing_ok=True)
+    for leftover in dst.parent.glob(dst.stem + ".stage.wav"):
+        leftover.unlink(missing_ok=True)
+
+    # Причина: AAC на энкоде поднимает интерсэмпловые пики на 0.4–0.9 дБ, из-за чего
+    # итоговый файл выходит за −1.5 dBTP при идеальном wav. Поэтому, если задан aac_tp,
+    # меряем пик уже после «пробного» AAC-энкода и уводим gain ровно настолько.
+    aac = None
+    if aac_tp is not None:
+        AAC_TP_MARGIN = 0.12
+        for _ in range(3):
+            probe = dst.with_suffix(".aacprobe.m4a")
+            ffmpeg(["-v", "error", "-i", str(dst), "-c:a", "aac", "-b:a", "256k",
+                    "-ar", str(SR), "-ac", "2", str(probe)])
+            got = true_peak_dbtp(probe)
+            probe.unlink(missing_ok=True)
+            delta = (aac_tp - AAC_TP_MARGIN) - got
+            if abs(delta) < 0.1:
+                break
+            # сдвиг не больше ±1.2 дБ за шаг и только вниз: поднимать громкость
+            # обратно уже нечем (loudnorm сделал своё дело)
+            delta = max(-1.2, min(0.0, delta))
+            nxt = dst.with_suffix(".aaccorr.wav")
+            ffmpeg(["-i", str(dst), "-af", f"volume={delta:+.2f}dB", "-ar", str(SR),
+                    "-ac", "2", "-c:a", "pcm_s16le", str(nxt)])
+            nxt.replace(dst)
+            aac = {"delta_db": round(delta, 2), "probe_tp": got}
     final = measure_loudness(dst)
     return {"history": history, "after": final, "attempts": len(history),
-            "target": {"I": target_lufs, "TP": tp}, "file": str(dst)}
+            "target": {"I": target_lufs, "TP": tp}, "aac_correction": aac,
+            "file": str(dst)}
 
 
 def concat_segment_audio(segments: list[dict], out_path: Path = AUD / "game_raw.wav") -> Path:

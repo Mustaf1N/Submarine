@@ -524,6 +524,9 @@ def build(analysis: dict | None = None, target: float = 750.0, fit: bool = True,
             changed = False
             for x in flex:
                 new_speed = max(0.95, min(3.0, x["speed"] * factor))
+                # не сжимаем сегмент до «мигания»: минимум ~0.5 с на экране
+                src_len = x["out"] - x["in"]
+                new_speed = min(new_speed, max(x["speed"], src_len / 0.5))
                 if abs(new_speed - x["speed"]) > 1e-4:
                     x["speed"] = round(new_speed, 3)
                     changed = True
@@ -603,8 +606,10 @@ def build(analysis: dict | None = None, target: float = 750.0, fit: bool = True,
         if (s["out"] - s["in"]) / max(0.05, s["speed"]) < 0.35:
             problems.append(f"слишком короткий сегмент: {s['label']} "
                             f"({(s['out'] - s['in']) / s['speed']:.2f} с)")
-    if not (600 <= total_dur <= 900):
-        problems.append(f"длительность {tc(total_dur)} вне коридора 10:00–15:00")
+    in_corridor = 600 <= total_dur <= 900
+    if not in_corridor:
+        problems.append(f"длительность {tc(total_dur)} вне коридора 10:00–15:00 "
+                        f"(для self-test это ожидаемо)")
     for s in out_segments:
         if s.get("protected") and abs(s["speed"] - 1.0) > 1e-6:
             problems.append(f"защищённый сегмент {s['label']} имеет speed={s['speed']}")

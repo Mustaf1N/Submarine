@@ -71,7 +71,7 @@ def write_report(edl: dict, qc: dict | None, note: str = "") -> Path:
     chapters = edl["chapters"]
 
     # что ускорено
-    sped = sorted([s for s in segs if s["speed"] > 1.02], key=lambda s: -s["speed"])
+    sped = sorted([s for s in segs if s["speed"] > 1.02], key=lambda s: s["start"])
     protected = [s for s in segs if s.get("protected")]
     removed = edl.get("removed", [])
 
@@ -128,7 +128,7 @@ def write_report(edl: dict, qc: dict | None, note: str = "") -> Path:
         "|---|---|---|---|---|",
     ]
     if removed:
-        for r in removed:
+        for r in sorted(removed, key=lambda r: r["start"]):
             lines.append(f"| {r['src']} | {tc(r['start'])} | {tc(r['end'])} | "
                          f"{r['len']:.1f} с | {r.get('reason','')} |")
     else:
@@ -148,8 +148,12 @@ def write_report(edl: dict, qc: dict | None, note: str = "") -> Path:
         "| Участок | Скорость | Таймкод в ролике |",
         "|---|---|---|",
     ]
-    for s in sped:
-        lines.append(f"| {s['label']} | ×{s['speed']:.2f} | {tc(s['start'])} |")
+    if sped:
+        for s in sped:
+            lines.append(f"| {s['label']} | ×{s['speed']:.2f} | {tc(s['start'])} — "
+                         f"{tc(s['start'] + s['duration'])} |")
+    else:
+        lines.append("| — | — | ускорять не потребовалось |")
     lines += [
         "",
         "### Защищённые участки (строго ×1.0, без вырезок внутри)",
@@ -239,6 +243,7 @@ def main():
     ap.add_argument("--qc", default=str(QC / "qc.json"))
     ap.add_argument("--note", default="", help="баннер в начале отчёта (напр. «данные self-test»)")
     ap.add_argument("--out", default=str(ROOT / "docs" / "ОТЧЁТ.md"))
+    ap.add_argument("--appendix", default="", help="файл с дополнительным разделом в конце")
     args = ap.parse_args()
     edl = load_json(Path(args.timeline))
     qc = load_json(Path(args.qc)) if Path(args.qc).exists() else None
@@ -249,6 +254,9 @@ def main():
     cha = write_chapters(edl)
     srt = ROOT / "docs" / "howemine.srt"
     srt.write_text(build_srt(edl), encoding="utf-8")
+    if args.appendix and Path(args.appendix).exists():
+        extra = Path(args.appendix).read_text(encoding="utf-8")
+        rep.write_text(rep.read_text(encoding="utf-8").rstrip() + "\n" + extra, encoding="utf-8")
     log(f"[report] {rep}")
     log(f"[report] {cha}")
     log(f"[report] {srt} ({srt.read_text(encoding='utf-8').count('-->')} реплик)")
