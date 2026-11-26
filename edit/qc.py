@@ -71,7 +71,7 @@ def contact_sheet(video: Path, duration: float, step: float = 45.0, width: int =
             thumbs.append(label(img, tc(float(t))))
     if not thumbs:
         raise RuntimeError("не удалось снять кадры для контактного листа")
-    cols = 4
+    cols = min(4, len(thumbs))
     tw, th = thumbs[0].size
     rows = (len(thumbs) + cols - 1) // cols
     sheet = Image.new("RGB", (cols * tw, rows * th), (10, 10, 12))

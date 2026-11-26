@@ -14,3 +14,12 @@
 Чтобы получить готовый 12-минутный ролик: положите записи в `raw/A.mp4` и
 `raw/B.mp4` (или оставьте «сырые» имена — пайплайн найдёт их сам) и выполните
 `bash run_all.sh`.
+
+## Где готовый файл
+
+* `deliver/HoweMine_review_1080p60.mp4` в workspace (38 МБ);
+* публичная ссылка (Dropbox, доступ на просмотр/скачивание):
+  <https://www.dropbox.com/scl/fi/iuzhp63ks5nl9soqr66cu/HoweMine_review_1080p60.mp4?rlkey=9o8fm9k31nmgqrdeelgsnexk8&dl=0>;
+
+GitHub Release опубликовать из этой среды не удалось: токен не имеет права
+создавать репозитории (`createRepository`), а `uploads.github.com` не отвечает (EOF).
