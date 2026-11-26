@@ -1,0 +1,1011 @@
+{
+  "A": {
+    "file": "/home/user/Submarine/work/selftest/raw/A.mp4",
+    "brief": {
+      "path": "/home/user/Submarine/work/selftest/raw/A.mp4",
+      "duration": 36.0,
+      "size": 5591469,
+      "bitrate": 1242548,
+      "width": 1920,
+      "height": 1080,
+      "fps": 15.0,
+      "vcodec": "h264",
+      "acodec": "aac",
+      "achannels": 2
+    },
+    "step": 0.2,
+    "frames": 180,
+    "freezes": [],
+    "lag_total": 0,
+    "content_static_total": 0,
+    "blacks": [],
+    "gui_intervals": [],
+    "chat_intervals": [],
+    "timeline": [
+      {
+        "t": 0.0,
+        "luma": 65.8,
+        "luma_std": 29.6,
+        "motion": 0.0,
+        "gui": 0.0002,
+        "chat": 0.0034
+      },
+      {
+        "t": 1.0,
+        "luma": 66.3,
+        "luma_std": 29.8,
+        "motion": 0.10011,
+        "gui": 0.0012,
+        "chat": 0.0
+      },
+      {
+        "t": 2.0,
+        "luma": 64.7,
+        "luma_std": 29.4,
+        "motion": 0.09745,
+        "gui": 0.0011,
+        "chat": 0.0
+      },
+      {
+        "t": 3.0,
+        "luma": 65.9,
+        "luma_std": 27.6,
+        "motion": 0.04536,
+        "gui": 0.0007,
+        "chat": 0.0
+      },
+      {
+        "t": 4.0,
+        "luma": 65.6,
+        "luma_std": 28.6,
+        "motion": 0.09417,
+        "gui": 0.001,
+        "chat": 0.0
+      },
+      {
+        "t": 5.0,
+        "luma": 66.9,
+        "luma_std": 29.5,
+        "motion": 0.09954,
+        "gui": 0.0016,
+        "chat": 0.0
+      },
+      {
+        "t": 6.0,
+        "luma": 66.7,
+        "luma_std": 30.2,
+        "motion": 0.10108,
+        "gui": 0.001,
+        "chat": 0.0005
+      },
+      {
+        "t": 7.0,
+        "luma": 65.7,
+        "luma_std": 29.2,
+        "motion": 0.05803,
+        "gui": 0.0012,
+        "chat": 0.0034
+      },
+      {
+        "t": 8.0,
+        "luma": 67.5,
+        "luma_std": 30.3,
+        "motion": 0.09398,
+        "gui": 0.0006,
+        "chat": 0.0002
+      },
+      {
+        "t": 9.0,
+        "luma": 65.9,
+        "luma_std": 28.0,
+        "motion": 0.0951,
+        "gui": 0.0004,
+        "chat": 0.0
+      },
+      {
+        "t": 10.0,
+        "luma": 67.1,
+        "luma_std": 28.6,
+        "motion": 0.09881,
+        "gui": 0.0007,
+        "chat": 0.0
+      },
+      {
+        "t": 11.0,
+        "luma": 63.1,
+        "luma_std": 27.1,
+        "motion": 0.09355,
+        "gui": 0.0015,
+        "chat": 0.0
+      },
+      {
+        "t": 12.0,
+        "luma": 66.2,
+        "luma_std": 27.6,
+        "motion": 0.09719,
+        "gui": 0.0016,
+        "chat": 0.0
+      },
+      {
+        "t": 13.0,
+        "luma": 66.9,
+        "luma_std": 30.1,
+        "motion": 0.09263,
+        "gui": 0.001,
+        "chat": 0.0007
+      },
+      {
+        "t": 14.0,
+        "luma": 66.1,
+        "luma_std": 30.2,
+        "motion": 0.05911,
+        "gui": 0.0001,
+        "chat": 0.0036
+      },
+      {
+        "t": 15.0,
+        "luma": 68.1,
+        "luma_std": 30.9,
+        "motion": 0.1054,
+        "gui": 0.0,
+        "chat": 0.0009
+      },
+      {
+        "t": 16.0,
+        "luma": 64.1,
+        "luma_std": 28.7,
+        "motion": 0.09721,
+        "gui": 0.0002,
+        "chat": 0.0
+      },
+      {
+        "t": 17.0,
+        "luma": 66.0,
+        "luma_std": 27.4,
+        "motion": 0.08937,
+        "gui": 0.0007,
+        "chat": 0.0
+      },
+      {
+        "t": 18.0,
+        "luma": 65.8,
+        "luma_std": 28.4,
+        "motion": 0.04699,
+        "gui": 0.0005,
+        "chat": 0.0
+      },
+      {
+        "t": 19.0,
+        "luma": 66.0,
+        "luma_std": 28.2,
+        "motion": 0.09607,
+        "gui": 0.0008,
+        "chat": 0.0
+      },
+      {
+        "t": 20.0,
+        "luma": 67.1,
+        "luma_std": 30.9,
+        "motion": 0.1046,
+        "gui": 0.0016,
+        "chat": 0.0004
+      },
+      {
+        "t": 21.0,
+        "luma": 65.4,
+        "luma_std": 30.2,
+        "motion": 0.10977,
+        "gui": 0.0017,
+        "chat": 0.0045
+      },
+      {
+        "t": 22.0,
+        "luma": 64.8,
+        "luma_std": 30.0,
+        "motion": 0.10536,
+        "gui": 0.0012,
+        "chat": 0.0
+      },
+      {
+        "t": 23.0,
+        "luma": 65.8,
+        "luma_std": 29.3,
+        "motion": 0.10029,
+        "gui": 0.0002,
+        "chat": 0.0
+      },
+      {
+        "t": 24.0,
+        "luma": 64.8,
+        "luma_std": 26.8,
+        "motion": 0.04456,
+        "gui": 0.0007,
+        "chat": 0.0
+      },
+      {
+        "t": 25.0,
+        "luma": 65.4,
+        "luma_std": 28.3,
+        "motion": 0.09404,
+        "gui": 0.0002,
+        "chat": 0.0
+      },
+      {
+        "t": 26.0,
+        "luma": 66.1,
+        "luma_std": 29.4,
+        "motion": 0.09969,
+        "gui": 0.0012,
+        "chat": 0.0
+      },
+      {
+        "t": 27.0,
+        "luma": 64.8,
+        "luma_std": 30.1,
+        "motion": 0.10959,
+        "gui": 0.0007,
+        "chat": 0.0
+      },
+      {
+        "t": 28.0,
+        "luma": 65.5,
+        "luma_std": 29.9,
+        "motion": 0.05536,
+        "gui": 0.0,
+        "chat": 0.0036
+      },
+      {
+        "t": 29.0,
+        "luma": 67.5,
+        "luma_std": 30.2,
+        "motion": 0.0986,
+        "gui": 0.0001,
+        "chat": 0.0
+      },
+      {
+        "t": 30.0,
+        "luma": 66.0,
+        "luma_std": 28.4,
+        "motion": 0.09854,
+        "gui": 0.0,
+        "chat": 0.0
+      },
+      {
+        "t": 31.0,
+        "luma": 65.4,
+        "luma_std": 28.4,
+        "motion": 0.09866,
+        "gui": 0.0017,
+        "chat": 0.0
+      },
+      {
+        "t": 32.0,
+        "luma": 62.2,
+        "luma_std": 26.3,
+        "motion": 0.09218,
+        "gui": 0.0005,
+        "chat": 0.0
+      },
+      {
+        "t": 33.0,
+        "luma": 66.7,
+        "luma_std": 27.7,
+        "motion": 0.09676,
+        "gui": 0.0015,
+        "chat": 0.0
+      },
+      {
+        "t": 34.0,
+        "luma": 65.7,
+        "luma_std": 30.6,
+        "motion": 0.10627,
+        "gui": 0.0011,
+        "chat": 0.0
+      },
+      {
+        "t": 35.0,
+        "luma": 65.3,
+        "luma_std": 30.0,
+        "motion": 0.06449,
+        "gui": 0.0018,
+        "chat": 0.0031
+      }
+    ]
+  },
+  "B": {
+    "file": "/home/user/Submarine/work/selftest/raw/B.mp4",
+    "brief": {
+      "path": "/home/user/Submarine/work/selftest/raw/B.mp4",
+      "duration": 82.0,
+      "size": 11218089,
+      "bitrate": 1094447,
+      "width": 1280,
+      "height": 960,
+      "fps": 60.0,
+      "vcodec": "h264",
+      "acodec": "aac",
+      "achannels": 2
+    },
+    "step": 0.2,
+    "frames": 410,
+    "freezes": [
+      {
+        "start": 20.2,
+        "end": 22.0,
+        "len": 1.8,
+        "gui": 0.0021,
+        "kind": "lag"
+      },
+      {
+        "start": 60.2,
+        "end": 61.6,
+        "len": 1.4,
+        "gui": 0.0021,
+        "kind": "lag"
+      }
+    ],
+    "lag_total": 3.2,
+    "content_static_total": 0,
+    "blacks": [],
+    "gui_intervals": [],
+    "chat_intervals": [],
+    "timeline": [
+      {
+        "t": 0.0,
+        "luma": 33.1,
+        "luma_std": 19.6,
+        "motion": 0.0,
+        "gui": 0.0,
+        "chat": 0.0
+      },
+      {
+        "t": 1.0,
+        "luma": 32.6,
+        "luma_std": 20.2,
+        "motion": 0.02033,
+        "gui": 0.0,
+        "chat": 0.0
+      },
+      {
+        "t": 2.0,
+        "luma": 31.5,
+        "luma_std": 20.6,
+        "motion": 0.01946,
+        "gui": 0.0,
+        "chat": 0.0
+      },
+      {
+        "t": 3.0,
+        "luma": 32.0,
+        "luma_std": 20.5,
+        "motion": 0.02028,
+        "gui": 0.0,
+        "chat": 0.0
+      },
+      {
+        "t": 4.0,
+        "luma": 32.0,
+        "luma_std": 20.3,
+        "motion": 0.01872,
+        "gui": 0.0,
+        "chat": 0.0
+      },
+      {
+        "t": 5.0,
+        "luma": 31.8,
+        "luma_std": 20.2,
+        "motion": 0.01777,
+        "gui": 0.0,
+        "chat": 0.0
+      },
+      {
+        "t": 6.0,
+        "luma": 34.0,
+        "luma_std": 19.2,
+        "motion": 0.02077,
+        "gui": 0.0,
+        "chat": 0.0
+      },
+      {
+        "t": 7.0,
+        "luma": 32.7,
+        "luma_std": 20.1,
+        "motion": 0.01932,
+        "gui": 0.0,
+        "chat": 0.0
+      },
+      {
+        "t": 8.0,
+        "luma": 25.3,
+        "luma_std": 20.6,
+        "motion": 0.04826,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 9.0,
+        "luma": 25.2,
+        "luma_std": 20.6,
+        "motion": 0.03155,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 10.0,
+        "luma": 24.0,
+        "luma_std": 20.9,
+        "motion": 0.03496,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 11.0,
+        "luma": 24.3,
+        "luma_std": 20.8,
+        "motion": 0.03359,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 12.0,
+        "luma": 25.5,
+        "luma_std": 20.6,
+        "motion": 0.03376,
+        "gui": 0.0022,
+        "chat": 0.0
+      },
+      {
+        "t": 13.0,
+        "luma": 24.2,
+        "luma_std": 20.5,
+        "motion": 0.03134,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 14.0,
+        "luma": 26.3,
+        "luma_std": 20.6,
+        "motion": 0.03368,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 15.0,
+        "luma": 25.0,
+        "luma_std": 20.8,
+        "motion": 0.03262,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 16.0,
+        "luma": 25.3,
+        "luma_std": 20.6,
+        "motion": 0.0334,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 17.0,
+        "luma": 25.5,
+        "luma_std": 20.4,
+        "motion": 0.03044,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 18.0,
+        "luma": 24.8,
+        "luma_std": 20.9,
+        "motion": 0.03348,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 19.0,
+        "luma": 24.5,
+        "luma_std": 20.6,
+        "motion": 0.03481,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 20.0,
+        "luma": 26.1,
+        "luma_std": 20.4,
+        "motion": 0.03387,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 21.0,
+        "luma": 26.1,
+        "luma_std": 20.4,
+        "motion": 0.00028,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 22.0,
+        "luma": 25.2,
+        "luma_std": 20.8,
+        "motion": 0.03536,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 23.0,
+        "luma": 25.3,
+        "luma_std": 21.0,
+        "motion": 0.03231,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 24.0,
+        "luma": 26.4,
+        "luma_std": 20.6,
+        "motion": 0.03583,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 25.0,
+        "luma": 24.6,
+        "luma_std": 20.5,
+        "motion": 0.03188,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 26.0,
+        "luma": 24.5,
+        "luma_std": 21.0,
+        "motion": 0.03398,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 27.0,
+        "luma": 24.3,
+        "luma_std": 20.9,
+        "motion": 0.03352,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 28.0,
+        "luma": 24.9,
+        "luma_std": 20.8,
+        "motion": 0.03483,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 29.0,
+        "luma": 25.8,
+        "luma_std": 20.5,
+        "motion": 0.03344,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 30.0,
+        "luma": 114.4,
+        "luma_std": 20.6,
+        "motion": 0.35134,
+        "gui": 0.0032,
+        "chat": 0.1156
+      },
+      {
+        "t": 31.0,
+        "luma": 116.1,
+        "luma_std": 20.7,
+        "motion": 0.03311,
+        "gui": 0.0196,
+        "chat": 0.1333
+      },
+      {
+        "t": 32.0,
+        "luma": 116.5,
+        "luma_std": 20.5,
+        "motion": 0.03591,
+        "gui": 0.0387,
+        "chat": 0.1953
+      },
+      {
+        "t": 33.0,
+        "luma": 114.4,
+        "luma_std": 20.4,
+        "motion": 0.03071,
+        "gui": 0.0026,
+        "chat": 0.1149
+      },
+      {
+        "t": 34.0,
+        "luma": 24.3,
+        "luma_std": 21.0,
+        "motion": 0.35112,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 35.0,
+        "luma": 23.9,
+        "luma_std": 20.8,
+        "motion": 0.03488,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 36.0,
+        "luma": 25.1,
+        "luma_std": 21.0,
+        "motion": 0.03922,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 37.0,
+        "luma": 25.4,
+        "luma_std": 20.8,
+        "motion": 0.03363,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 38.0,
+        "luma": 23.9,
+        "luma_std": 20.8,
+        "motion": 0.03394,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 39.0,
+        "luma": 26.5,
+        "luma_std": 20.8,
+        "motion": 0.03532,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 40.0,
+        "luma": 26.6,
+        "luma_std": 20.7,
+        "motion": 0.03269,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 41.0,
+        "luma": 24.7,
+        "luma_std": 20.6,
+        "motion": 0.03102,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 42.0,
+        "luma": 24.3,
+        "luma_std": 21.0,
+        "motion": 0.03308,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 43.0,
+        "luma": 23.8,
+        "luma_std": 20.9,
+        "motion": 0.03548,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 44.0,
+        "luma": 24.6,
+        "luma_std": 21.1,
+        "motion": 0.03907,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 45.0,
+        "luma": 25.1,
+        "luma_std": 20.8,
+        "motion": 0.03415,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 46.0,
+        "luma": 24.0,
+        "luma_std": 20.8,
+        "motion": 0.03255,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 47.0,
+        "luma": 26.2,
+        "luma_std": 20.7,
+        "motion": 0.03606,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 48.0,
+        "luma": 26.3,
+        "luma_std": 20.7,
+        "motion": 0.03402,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 49.0,
+        "luma": 25.2,
+        "luma_std": 20.6,
+        "motion": 0.03113,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 50.0,
+        "luma": 24.2,
+        "luma_std": 21.0,
+        "motion": 0.03353,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 51.0,
+        "luma": 24.0,
+        "luma_std": 20.8,
+        "motion": 0.03645,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 52.0,
+        "luma": 24.3,
+        "luma_std": 21.1,
+        "motion": 0.03652,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 53.0,
+        "luma": 24.4,
+        "luma_std": 20.8,
+        "motion": 0.03359,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 54.0,
+        "luma": 23.9,
+        "luma_std": 20.8,
+        "motion": 0.02902,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 55.0,
+        "luma": 25.9,
+        "luma_std": 20.8,
+        "motion": 0.03691,
+        "gui": 0.0022,
+        "chat": 0.0
+      },
+      {
+        "t": 56.0,
+        "luma": 26.3,
+        "luma_std": 20.6,
+        "motion": 0.03484,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 57.0,
+        "luma": 25.5,
+        "luma_std": 20.6,
+        "motion": 0.03095,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 58.0,
+        "luma": 24.2,
+        "luma_std": 20.9,
+        "motion": 0.03293,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 59.0,
+        "luma": 24.6,
+        "luma_std": 20.7,
+        "motion": 0.03529,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 60.0,
+        "luma": 26.1,
+        "luma_std": 20.4,
+        "motion": 0.03528,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 61.0,
+        "luma": 26.1,
+        "luma_std": 20.4,
+        "motion": 0.0,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 62.0,
+        "luma": 23.6,
+        "luma_std": 20.7,
+        "motion": 0.02973,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 63.0,
+        "luma": 26.4,
+        "luma_std": 20.7,
+        "motion": 0.03483,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 64.0,
+        "luma": 26.5,
+        "luma_std": 20.5,
+        "motion": 0.03625,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 65.0,
+        "luma": 25.4,
+        "luma_std": 20.7,
+        "motion": 0.03177,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 66.0,
+        "luma": 24.3,
+        "luma_std": 20.9,
+        "motion": 0.03371,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 67.0,
+        "luma": 24.7,
+        "luma_std": 20.6,
+        "motion": 0.0326,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 68.0,
+        "luma": 24.6,
+        "luma_std": 21.1,
+        "motion": 0.03848,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 69.0,
+        "luma": 23.9,
+        "luma_std": 20.9,
+        "motion": 0.03364,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 70.0,
+        "luma": 23.4,
+        "luma_std": 20.9,
+        "motion": 0.03104,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 71.0,
+        "luma": 26.8,
+        "luma_std": 20.4,
+        "motion": 0.03326,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 72.0,
+        "luma": 26.5,
+        "luma_std": 20.5,
+        "motion": 0.03825,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 73.0,
+        "luma": 25.5,
+        "luma_std": 20.7,
+        "motion": 0.03359,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 74.0,
+        "luma": 24.2,
+        "luma_std": 20.8,
+        "motion": 0.03446,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 75.0,
+        "luma": 24.9,
+        "luma_std": 20.5,
+        "motion": 0.0318,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 76.0,
+        "luma": 26.2,
+        "luma_std": 20.4,
+        "motion": 0.03758,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 77.0,
+        "luma": 24.0,
+        "luma_std": 21.0,
+        "motion": 0.03336,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 78.0,
+        "luma": 23.8,
+        "luma_std": 21.0,
+        "motion": 0.03296,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 79.0,
+        "luma": 24.7,
+        "luma_std": 20.7,
+        "motion": 0.03368,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 80.0,
+        "luma": 26.3,
+        "luma_std": 20.8,
+        "motion": 0.0391,
+        "gui": 0.0021,
+        "chat": 0.0
+      },
+      {
+        "t": 81.0,
+        "luma": 26.0,
+        "luma_std": 20.6,
+        "motion": 0.03523,
+        "gui": 0.0021,
+        "chat": 0.0
+      }
+    ]
+  }
+}

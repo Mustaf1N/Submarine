@@ -1,0 +1,2061 @@
+{
+  "meta": {
+    "title": "HoweMine — обзор сборки на продажу",
+    "fps": 60,
+    "width": 1920,
+    "height": 1080,
+    "total_duration": 751.106,
+    "total_tc": "12:31",
+    "target": 750.0,
+    "corridor": [
+      600,
+      900
+    ],
+    "sources": {
+      "A": "/home/user/Submarine/raw/A.mp4",
+      "B": "/home/user/Submarine/raw/B.mp4"
+    },
+    "style": {
+      "brand": "#FF7A7A",
+      "grade": {
+        "contrast": 1.07,
+        "brightness": -0.005,
+        "saturation": 1.08,
+        "gamma": 1.02,
+        "sharpen": 0.45
+      },
+      "grade_B": {
+        "contrast": 1.06,
+        "saturation": 1.1,
+        "gamma": 1.45
+      }
+    },
+    "protected_windows": {
+      "A": [
+        [
+          704.0,
+          730.0
+        ],
+        [
+          1164.0,
+          1240.0
+        ]
+      ],
+      "B": [
+        [
+          8.5,
+          69.5
+        ]
+      ]
+    },
+    "counts": {
+      "segments": 37,
+      "cuts_removed": 0,
+      "removed_seconds": 0,
+      "transitions": 18
+    },
+    "validation": {
+      "problems": [],
+      "ok": true
+    }
+  },
+  "chapters": [
+    {
+      "chapter": "ХУК",
+      "start": 0.0,
+      "tc": "0:00",
+      "duration": 9.1
+    },
+    {
+      "chapter": "ТИТР",
+      "start": 9.1,
+      "tc": "0:09",
+      "duration": 2.8
+    },
+    {
+      "chapter": "СПАВН",
+      "start": 11.9,
+      "tc": "0:11",
+      "duration": 64.42
+    },
+    {
+      "chapter": "ТУР ПО СПАВНУ",
+      "start": 76.318,
+      "tc": "1:16",
+      "duration": 38.59
+    },
+    {
+      "chapter": "ТОРГОВЛЯ",
+      "start": 114.905,
+      "tc": "1:54",
+      "duration": 61.9
+    },
+    {
+      "chapter": "ПРОГРЕСС",
+      "start": 176.804,
+      "tc": "2:56",
+      "duration": 26.34
+    },
+    {
+      "chapter": "БАЗА",
+      "start": 203.143,
+      "tc": "3:23",
+      "duration": 34.21
+    },
+    {
+      "chapter": "СКЛАД",
+      "start": 237.357,
+      "tc": "3:57",
+      "duration": 82.04
+    },
+    {
+      "chapter": "ДОНАТ-КЕЙСЫ",
+      "start": 319.397,
+      "tc": "5:19",
+      "duration": 27.0
+    },
+    {
+      "chapter": "ЛОКАЦИИ",
+      "start": 346.397,
+      "tc": "5:46",
+      "duration": 85.51
+    },
+    {
+      "chapter": "ПУТЕШЕСТВИЕ",
+      "start": 431.904,
+      "tc": "7:11",
+      "duration": 67.76
+    },
+    {
+      "chapter": "КУБ И БИОМЫ",
+      "start": 499.667,
+      "tc": "8:19",
+      "duration": 49.98
+    },
+    {
+      "chapter": "ЛУТ",
+      "start": 549.652,
+      "tc": "9:09",
+      "duration": 76.0
+    },
+    {
+      "chapter": "СТРОЙКА",
+      "start": 625.652,
+      "tc": "10:25",
+      "duration": 33.54
+    },
+    {
+      "chapter": "АРЕНА",
+      "start": 659.193,
+      "tc": "10:59",
+      "duration": 68.0
+    },
+    {
+      "chapter": "ФИНАЛ",
+      "start": 727.193,
+      "tc": "12:07",
+      "duration": 23.91
+    }
+  ],
+  "segments": [
+    {
+      "id": null,
+      "src": "A",
+      "in": 705.4,
+      "out": 706.8,
+      "speed": 1.0,
+      "label": "хук · открытие кейса",
+      "chapter": "ХУК",
+      "flex": false,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.12,
+        "fx": 0.5,
+        "fy": 0.45
+      },
+      "trans_in": "flash",
+      "overlays": [
+        {
+          "type": "bars",
+          "local": 0.0,
+          "dur": 1.4
+        },
+        {
+          "type": "caption",
+          "text": "СМОТРИ ДО КОНЦА",
+          "local": 0.15,
+          "dur": 1.2,
+          "color": "brand",
+          "y": 760,
+          "size": 54
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "low_boom",
+          "local": 0.0,
+          "gain": 0.9
+        },
+        {
+          "sfx": "riser",
+          "local": 0.0,
+          "gain": 0.35
+        }
+      ],
+      "gain": 1.0,
+      "note": "вау-кадр на первом кадре",
+      "protected": false,
+      "start": 0.0,
+      "duration": 1.4
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 721.2,
+      "out": 722.4,
+      "speed": 1.0,
+      "label": "хук · [САПФИР]",
+      "chapter": "ХУК",
+      "flex": false,
+      "camera": {
+        "type": "push",
+        "from": 1.02,
+        "to": 1.14,
+        "fx": 0.5,
+        "fy": 0.5
+      },
+      "trans_in": "whip",
+      "overlays": [
+        {
+          "type": "stamp",
+          "text": "[САПФИР]",
+          "sub": "на 7 дней",
+          "local": 0.05,
+          "dur": 1.15
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "pop",
+          "local": 0.1,
+          "gain": 0.8
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 1.4,
+      "duration": 1.2
+    },
+    {
+      "id": null,
+      "src": "B",
+      "in": 50.0,
+      "out": 56.5,
+      "speed": 1.0,
+      "label": "хук · арена, удар по дракону",
+      "chapter": "ХУК",
+      "flex": false,
+      "camera": {
+        "type": "shake",
+        "zoom": 1.05,
+        "amp": 0.006,
+        "freq": 2.2
+      },
+      "trans_in": "zoom_blur",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "ОБЗОР СБОРКИ HOWEMINE",
+          "local": 0.5,
+          "dur": 3.4,
+          "color": "white",
+          "y": 930,
+          "size": 46
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "hit",
+          "local": 0.0,
+          "gain": 0.85
+        },
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.5
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 2.6,
+      "duration": 6.5
+    },
+    {
+      "id": "card_open",
+      "src": "card",
+      "in": 0.0,
+      "out": 2.8,
+      "speed": 1.0,
+      "label": "открывающая карточка",
+      "chapter": "ТИТР",
+      "flex": false,
+      "camera": null,
+      "trans_in": "none",
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.05,
+          "gain": 0.7
+        },
+        {
+          "sfx": "click",
+          "local": 0.55,
+          "gain": 0.5
+        }
+      ],
+      "overlays": [
+        {
+          "type": "open_card",
+          "local": 0.0,
+          "dur": 2.8,
+          "title": "HoweMine",
+          "sub": "ОБЗОР СБОРКИ НА ПРОДАЖУ",
+          "bg": "still:A@11:45.8"
+        }
+      ],
+      "gain": 1.0,
+      "note": "брендинг: HoweMine #FF7A7A + линия + подзаголовок",
+      "protected": false,
+      "start": 9.1,
+      "duration": 2.8
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 2.0,
+      "out": 30.0,
+      "speed": 1.587,
+      "label": "спавн · вывеска HoweMine, аукцион",
+      "chapter": "СПАВН",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.012,
+        "freq": 0.14
+      },
+      "trans_in": "whip",
+      "overlays": [
+        {
+          "type": "chapter",
+          "num": "01",
+          "title": "СПАВН",
+          "sub": "витрина · NPC · торговые точки",
+          "local": 0.15,
+          "dur": 1.1,
+          "x": 110,
+          "y": 700
+        },
+        {
+          "type": "callout",
+          "kicker": "ЛОКАЦИЯ",
+          "title": "Спавн HoweMine",
+          "lines": [
+            "Аукцион и торговые точки",
+            "Витрина сборки"
+          ],
+          "rarity": "rare",
+          "local": 0.95,
+          "dur": 3.4,
+          "big": false,
+          "px": 686,
+          "py": 447,
+          "rect": [
+            566,
+            327,
+            806,
+            567
+          ],
+          "x": 120,
+          "y": 210
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.55
+        },
+        {
+          "sfx": "click",
+          "local": 0.95,
+          "gain": 0.4
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 11.9,
+      "duration": 17.643
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 32.0,
+      "out": 45.0,
+      "speed": 1.932,
+      "label": "спавн · NPC и первые цены",
+      "chapter": "СПАВН",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.05,
+        "fx": 0.55,
+        "fy": 0.5
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "спавн: аукцион, NPC, торговые точки",
+          "local": 0.5,
+          "dur": 2.4,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "click",
+          "local": 0.5,
+          "gain": 0.35
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 29.543,
+      "duration": 6.729
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 45.0,
+      "out": 150.0,
+      "speed": 2.622,
+      "label": "спавн · детали витрины и NPC",
+      "chapter": "СПАВН",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.06,
+        "amp": 0.015,
+        "freq": 0.12
+      },
+      "trans_in": "whip",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "витрина сборки: детали и оформление",
+          "local": 1.0,
+          "dur": 3.0,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.45
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 36.272,
+      "duration": 40.046
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 600.0,
+      "out": 638.0,
+      "speed": 2.208,
+      "label": "тур по спавну · часть 1",
+      "chapter": "ТУР ПО СПАВНУ",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.06,
+        "amp": 0.016,
+        "freq": 0.13
+      },
+      "trans_in": "none",
+      "overlays": [],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 76.318,
+      "duration": 17.21
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 644.0,
+      "out": 672.0,
+      "speed": 2.208,
+      "label": "тур по спавну · часть 2",
+      "chapter": "ТУР ПО СПАВНУ",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.06,
+        "amp": 0.016,
+        "freq": 0.11
+      },
+      "trans_in": "whip",
+      "overlays": [],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.5
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 93.528,
+      "duration": 12.681
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 678.0,
+      "out": 696.0,
+      "speed": 2.07,
+      "label": "тур по спавну · часть 3",
+      "chapter": "ТУР ПО СПАВНУ",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.02,
+        "to": 1.08,
+        "fx": 0.45,
+        "fy": 0.5
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "архитектура спавна крупным планом",
+          "local": 0.6,
+          "dur": 2.6,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 106.209,
+      "duration": 8.696
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 150.0,
+      "out": 177.0,
+      "speed": 1.38,
+      "label": "торговля · витрина и цены",
+      "chapter": "ТОРГОВЛЯ",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.07,
+        "fx": 0.5,
+        "fy": 0.45
+      },
+      "trans_in": "zoom_blur",
+      "overlays": [
+        {
+          "type": "chapter",
+          "num": "02",
+          "title": "ТОРГОВЛЯ",
+          "sub": "цены · витрина · точило",
+          "local": 0.15,
+          "dur": 1.1,
+          "x": 110,
+          "y": 700
+        },
+        {
+          "type": "callout",
+          "kicker": "ЭКОНОМИКА",
+          "title": "Витрина торговца",
+          "lines": [
+            "Цены на ресурсы и снаряжение",
+            "Покупка/продажа"
+          ],
+          "rarity": "gold",
+          "local": 1.0,
+          "dur": 3.4,
+          "big": false,
+          "px": 770,
+          "py": 468,
+          "rect": [
+            650,
+            348,
+            890,
+            588
+          ],
+          "x": 120,
+          "y": 210
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.55
+        },
+        {
+          "sfx": "click",
+          "local": 1.0,
+          "gain": 0.45
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 114.905,
+      "duration": 19.565
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 177.0,
+      "out": 197.0,
+      "speed": 1.38,
+      "label": "торговля · точило",
+      "chapter": "ТОРГОВЛЯ",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.09,
+        "fx": 0.55,
+        "fy": 0.5
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "callout",
+          "kicker": "ИНСТРУМЕНТ",
+          "title": "Точило",
+          "lines": [
+            "Зачарования и ремонт",
+            "Ключевая механика прогрессии"
+          ],
+          "rarity": "uncommon",
+          "local": 0.4,
+          "dur": 3.0,
+          "big": false,
+          "px": 960,
+          "py": 595,
+          "rect": [
+            840,
+            475,
+            1080,
+            715
+          ],
+          "x": 1160,
+          "y": 250
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "click",
+          "local": 0.4,
+          "gain": 0.4
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 134.47,
+      "duration": 14.493
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 197.0,
+      "out": 270.0,
+      "speed": 2.622,
+      "label": "торговля · ассортимент и цены",
+      "chapter": "ТОРГОВЛЯ",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.014,
+        "freq": 0.14
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "ассортимент: что и за сколько продаётся",
+          "local": 1.0,
+          "dur": 3.0,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 148.963,
+      "duration": 27.841
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 360.0,
+      "out": 372.0,
+      "speed": 1.38,
+      "label": "крафт",
+      "chapter": "ПРОГРЕСС",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.08,
+        "fx": 0.5,
+        "fy": 0.5
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "крафт · только реальные механики",
+          "local": 0.3,
+          "dur": 2.4,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "ui_open",
+          "local": 0.15,
+          "gain": 0.4
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 176.804,
+      "duration": 8.696
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 372.0,
+      "out": 400.0,
+      "speed": 1.587,
+      "label": "мост через пропасть",
+      "chapter": "ПРОГРЕСС",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.013,
+        "freq": 0.15
+      },
+      "trans_in": "whip",
+      "overlays": [],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.5
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 185.5,
+      "duration": 17.643
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 400.0,
+      "out": 443.0,
+      "speed": 2.139,
+      "label": "база · обзор снаружи и внутри",
+      "chapter": "БАЗА",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.06,
+        "amp": 0.015,
+        "freq": 0.12
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "callout",
+          "kicker": "ПОСТРОЙКА",
+          "title": "База игрока",
+          "lines": [
+            "Обзор снаружи и внутри",
+            "Склад, фермы, крафт-зона"
+          ],
+          "rarity": "rare",
+          "local": 1.5,
+          "dur": 3.4,
+          "big": false,
+          "px": 896,
+          "py": 489,
+          "rect": [
+            776,
+            369,
+            1016,
+            609
+          ],
+          "x": 120,
+          "y": 210
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "click",
+          "local": 1.5,
+          "gain": 0.4
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 203.143,
+      "duration": 20.103
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 443.0,
+      "out": 480.0,
+      "speed": 2.622,
+      "label": "база · детали и подсобные зоны",
+      "chapter": "БАЗА",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.06,
+        "fx": 0.5,
+        "fy": 0.5
+      },
+      "trans_in": "none",
+      "overlays": [],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 223.246,
+      "duration": 14.111
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 480.0,
+      "out": 524.0,
+      "speed": 2.208,
+      "label": "сундуки · инвентарь",
+      "chapter": "СКЛАД",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.05,
+        "fx": 0.5,
+        "fy": 0.5
+      },
+      "trans_in": "zoom_blur",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "статика инвентаря — это контент, а не брак",
+          "local": 1.2,
+          "dur": 2.8,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.45
+        },
+        {
+          "sfx": "ui_open",
+          "local": 1.2,
+          "gain": 0.5
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 237.357,
+      "duration": 19.928
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 524.0,
+      "out": 704.0,
+      "speed": 2.898,
+      "label": "склад · путь к донат-кейсам",
+      "chapter": "СКЛАД",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.013,
+        "freq": 0.15
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "подготовка к открытию донат-кейсов",
+          "local": 1.2,
+          "dur": 3.0,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 257.285,
+      "duration": 62.112
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 704.0,
+      "out": 730.0,
+      "speed": 1.0,
+      "label": "донат-кейсы · «100 ХОХЛОВ» + «Легенда»",
+      "chapter": "ДОНАТ-КЕЙСЫ",
+      "flex": false,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.05,
+        "fx": 0.5,
+        "fy": 0.5
+      },
+      "trans_in": "flash",
+      "overlays": [
+        {
+          "type": "chapter",
+          "num": "03",
+          "title": "ДОНАТ-КЕЙСЫ",
+          "sub": "открытие целиком · ×1.0",
+          "local": 0.15,
+          "dur": 1.1,
+          "x": 110,
+          "y": 700
+        },
+        {
+          "type": "callout",
+          "kicker": "ДОНАТ-КЕЙС",
+          "title": "«100 ХОХЛОВ»",
+          "lines": [
+            "Открытие показано целиком",
+            "Реальная скорость, без ускорения"
+          ],
+          "rarity": "legendary",
+          "local": 1.4,
+          "dur": 3.2,
+          "big": true,
+          "px": 960,
+          "py": 532,
+          "rect": [
+            840,
+            412,
+            1080,
+            652
+          ],
+          "x": 120,
+          "y": 210
+        },
+        {
+          "type": "callout",
+          "kicker": "НАГРАДА",
+          "title": "[САПФИР] на 7 дней",
+          "lines": [
+            "Ключевой дроп ролика",
+            "С запасом 0.3 с до и после"
+          ],
+          "rarity": "sapphire",
+          "local": 14.5,
+          "dur": 3.0,
+          "big": true,
+          "px": 960,
+          "py": 489,
+          "rect": [
+            840,
+            369,
+            1080,
+            609
+          ],
+          "x": 1160,
+          "y": 250
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "riser",
+          "local": 0.0,
+          "gain": 0.7
+        },
+        {
+          "sfx": "low_boom",
+          "local": 1.5,
+          "gain": 0.9
+        },
+        {
+          "sfx": "pop",
+          "local": 14.6,
+          "gain": 0.8
+        },
+        {
+          "sfx": "low_boom",
+          "local": 15.2,
+          "gain": 0.7
+        }
+      ],
+      "gain": 1.0,
+      "note": "ГЛАВНОЕ: ни одного кадра не вырезано; анимация кейса + выдача награды целиком",
+      "protected": true,
+      "start": 319.397,
+      "duration": 26.0
+    },
+    {
+      "id": "freeze_sapphire",
+      "src": "freeze",
+      "in": 0.0,
+      "out": 1.0,
+      "speed": 1.0,
+      "label": "freeze-frame · [САПФИР]",
+      "chapter": "ДОНАТ-КЕЙСЫ",
+      "flex": false,
+      "camera": null,
+      "trans_in": "flash",
+      "gain": 1.0,
+      "protected": false,
+      "frame_src": "A",
+      "frame_t": 729.4,
+      "overlays": [
+        {
+          "type": "stamp",
+          "text": "[САПФИР]",
+          "sub": "на 7 дней · легендарный дроп",
+          "local": 0.0,
+          "dur": 1.0
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "pop",
+          "local": 0.0,
+          "gain": 0.7
+        },
+        {
+          "sfx": "click",
+          "local": 0.4,
+          "gain": 0.4
+        }
+      ],
+      "note": "freeze-frame вставлен после анимации, чтобы её не рвать",
+      "start": 345.397,
+      "duration": 1.0
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 750.0,
+      "out": 840.0,
+      "speed": 1.38,
+      "label": "локации · часть 1",
+      "chapter": "ЛОКАЦИИ",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.013,
+        "freq": 0.14
+      },
+      "trans_in": "whip",
+      "overlays": [
+        {
+          "type": "callout",
+          "kicker": "МИР",
+          "title": "Локации сборки",
+          "lines": [
+            "Биомы и постройки мира",
+            "Единый грейд с обеими записями"
+          ],
+          "rarity": "uncommon",
+          "local": 1.2,
+          "dur": 3.0,
+          "big": false,
+          "px": 854,
+          "py": 468,
+          "rect": [
+            734,
+            348,
+            974,
+            588
+          ],
+          "x": 120,
+          "y": 210
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.45
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 346.397,
+      "duration": 65.217
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 840.0,
+      "out": 868.0,
+      "speed": 1.38,
+      "label": "локации · часть 2",
+      "chapter": "ЛОКАЦИИ",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.06,
+        "fx": 0.5,
+        "fy": 0.5
+      },
+      "trans_in": "none",
+      "overlays": [],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 411.614,
+      "duration": 20.29
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 868.0,
+      "out": 930.0,
+      "speed": 2.346,
+      "label": "путешествие · часть 1",
+      "chapter": "ПУТЕШЕСТВИЕ",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.014,
+        "freq": 0.12
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "путешествие по миру · ходьба ускорена ×1.5",
+          "local": 1.0,
+          "dur": 3.0,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 431.904,
+      "duration": 26.428
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 930.0,
+      "out": 970.0,
+      "speed": 2.346,
+      "label": "путешествие · часть 2",
+      "chapter": "ПУТЕШЕСТВИЕ",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.06,
+        "fx": 0.45,
+        "fy": 0.55
+      },
+      "trans_in": "zoom_blur",
+      "overlays": [],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.5
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 458.332,
+      "duration": 17.05
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 970.0,
+      "out": 1032.0,
+      "speed": 2.553,
+      "label": "путешествие · часть 3",
+      "chapter": "ПУТЕШЕСТВИЕ",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.012,
+        "freq": 0.16
+      },
+      "trans_in": "none",
+      "overlays": [],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 475.382,
+      "duration": 24.285
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 1032.0,
+      "out": 1070.0,
+      "speed": 2.208,
+      "label": "куб · часть 1",
+      "chapter": "КУБ И БИОМЫ",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.014,
+        "freq": 0.13
+      },
+      "trans_in": "whip",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "куб и биомы — витрина мира",
+          "local": 0.8,
+          "dur": 2.6,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.45
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 499.667,
+      "duration": 17.21
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 1070.0,
+      "out": 1100.0,
+      "speed": 2.622,
+      "label": "куб · часть 2",
+      "chapter": "КУБ И БИОМЫ",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.07,
+        "fx": 0.55,
+        "fy": 0.45
+      },
+      "trans_in": "none",
+      "overlays": [],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 516.877,
+      "duration": 11.442
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 1100.0,
+      "out": 1164.0,
+      "speed": 3.0,
+      "label": "переход к луту · сбор дропа",
+      "chapter": "КУБ И БИОМЫ",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.014,
+        "freq": 0.16
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "собираем лут — дальше главное",
+          "local": 1.0,
+          "dur": 2.8,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 528.319,
+      "duration": 21.333
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 1164.0,
+      "out": 1240.0,
+      "speed": 1.0,
+      "label": "лут · разбор инвентаря и прокрутка",
+      "chapter": "ЛУТ",
+      "flex": false,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.04,
+        "fx": 0.5,
+        "fy": 0.5
+      },
+      "trans_in": "zoom_blur",
+      "overlays": [
+        {
+          "type": "chapter",
+          "num": "04",
+          "title": "ЛУТ",
+          "sub": "реальная скорость · без ускорения",
+          "local": 0.15,
+          "dur": 1.1,
+          "x": 110,
+          "y": 700
+        },
+        {
+          "type": "callout",
+          "kicker": "ЛУТ",
+          "title": "Разбор дропа",
+          "lines": [
+            "Прокрутка лута — целиком",
+            "×1.0, с запасом 0.3 с"
+          ],
+          "rarity": "legendary",
+          "local": 1.2,
+          "dur": 3.6,
+          "big": true,
+          "px": 960,
+          "py": 532,
+          "rect": [
+            840,
+            412,
+            1080,
+            652
+          ],
+          "x": 120,
+          "y": 210
+        },
+        {
+          "type": "callout",
+          "kicker": "ИНВЕНТАРЬ",
+          "title": "Что выпало",
+          "lines": [
+            "Каждый предмет в кадре",
+            "Без ускорения и сокращений"
+          ],
+          "rarity": "rare",
+          "local": 26.0,
+          "dur": 3.2,
+          "big": false,
+          "px": 960,
+          "py": 574,
+          "rect": [
+            840,
+            454,
+            1080,
+            694
+          ],
+          "x": 1160,
+          "y": 250
+        },
+        {
+          "type": "callout",
+          "kicker": "ДРОП",
+          "title": "Появление предмета",
+          "lines": [
+            "Момент выдачи — полностью",
+            "0.3 с запаса до и после"
+          ],
+          "rarity": "sapphire",
+          "local": 48.0,
+          "dur": 3.0,
+          "big": false,
+          "px": 960,
+          "py": 511,
+          "rect": [
+            840,
+            391,
+            1080,
+            631
+          ],
+          "x": 120,
+          "y": 210
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.5
+        },
+        {
+          "sfx": "pop",
+          "local": 12.0,
+          "gain": 0.6
+        },
+        {
+          "sfx": "click",
+          "local": 26.0,
+          "gain": 0.4
+        },
+        {
+          "sfx": "pop",
+          "local": 48.0,
+          "gain": 0.6
+        }
+      ],
+      "gain": 1.0,
+      "note": "ГЛАВНОЕ: прокрутка лута и появление предметов показаны целиком в реальном темпе",
+      "protected": true,
+      "start": 549.652,
+      "duration": 76.0
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 1246.0,
+      "out": 1280.0,
+      "speed": 2.346,
+      "label": "стройка · часть 1",
+      "chapter": "СТРОЙКА",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.013,
+        "freq": 0.14
+      },
+      "trans_in": "whip",
+      "overlays": [
+        {
+          "type": "chapter",
+          "num": "05",
+          "title": "СТРОЙКА",
+          "sub": "ускорение ×1.3 — без потери деталей",
+          "local": 0.15,
+          "dur": 1.1,
+          "x": 110,
+          "y": 700
+        },
+        {
+          "type": "callout",
+          "kicker": "СТРОЙКА",
+          "title": "Возведение базы",
+          "lines": [
+            "Блок за блоком, без мусорных кадров",
+            "Медленные участки ускорены"
+          ],
+          "rarity": "uncommon",
+          "local": 1.4,
+          "dur": 3.2,
+          "big": false,
+          "px": 896,
+          "py": 489,
+          "rect": [
+            776,
+            369,
+            1016,
+            609
+          ],
+          "x": 120,
+          "y": 210
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.5
+        },
+        {
+          "sfx": "tick",
+          "local": 1.4,
+          "gain": 0.35
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 625.652,
+      "duration": 14.493
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 1280.0,
+      "out": 1326.0,
+      "speed": 2.415,
+      "label": "стройка · часть 2",
+      "chapter": "СТРОЙКА",
+      "flex": true,
+      "camera": {
+        "type": "push",
+        "from": 1.0,
+        "to": 1.06,
+        "fx": 0.5,
+        "fy": 0.5
+      },
+      "trans_in": "none",
+      "overlays": [],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 640.145,
+      "duration": 19.048
+    },
+    {
+      "id": null,
+      "src": "B",
+      "in": 9.0,
+      "out": 32.0,
+      "speed": 1.0,
+      "label": "арена · вход и первый бой",
+      "chapter": "АРЕНА",
+      "flex": false,
+      "camera": {
+        "type": "shake",
+        "zoom": 1.045,
+        "amp": 0.005,
+        "freq": 2.0
+      },
+      "trans_in": "flash",
+      "overlays": [
+        {
+          "type": "chapter",
+          "num": "06",
+          "title": "АРЕНА",
+          "sub": "Эндер-дракон · 4:3 → 16:9",
+          "local": 0.15,
+          "dur": 1.1,
+          "x": 110,
+          "y": 700
+        },
+        {
+          "type": "callout",
+          "kicker": "БОСС",
+          "title": "Эндер-дракон",
+          "lines": [
+            "Арена из второй записи",
+            "Картинка 4:3 вписана в 16:9"
+          ],
+          "rarity": "mythic",
+          "local": 1.2,
+          "dur": 3.2,
+          "big": false,
+          "px": 960,
+          "py": 540,
+          "rect": [
+            840,
+            420,
+            1080,
+            660
+          ],
+          "x": 120,
+          "y": 210
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "hit",
+          "local": 0.0,
+          "gain": 0.8
+        },
+        {
+          "sfx": "low_boom",
+          "local": 1.2,
+          "gain": 0.8
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 659.193,
+      "duration": 23.0
+    },
+    {
+      "id": null,
+      "src": "B",
+      "in": 35.0,
+      "out": 69.0,
+      "speed": 1.0,
+      "label": "арена · добивание дракона",
+      "chapter": "АРЕНА",
+      "flex": false,
+      "camera": {
+        "type": "shake",
+        "zoom": 1.05,
+        "amp": 0.006,
+        "freq": 2.4
+      },
+      "trans_in": "none",
+      "overlays": [],
+      "sfx": [
+        {
+          "sfx": "hit",
+          "local": 4.0,
+          "gain": 0.7
+        },
+        {
+          "sfx": "low_boom",
+          "local": 12.0,
+          "gain": 0.85
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 682.193,
+      "duration": 34.0
+    },
+    {
+      "id": null,
+      "src": "B",
+      "in": 71.0,
+      "out": 82.0,
+      "speed": 1.0,
+      "label": "финал · лес после боя",
+      "chapter": "АРЕНА",
+      "flex": false,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.05,
+        "amp": 0.015,
+        "freq": 0.12
+      },
+      "trans_in": "none",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "после боя: мир и биомы",
+          "local": 1.2,
+          "dur": 2.4,
+          "color": "white",
+          "align": "center",
+          "y": 940,
+          "size": 40
+        }
+      ],
+      "sfx": [],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 716.193,
+      "duration": 11.0
+    },
+    {
+      "id": null,
+      "src": "A",
+      "in": 1326.0,
+      "out": 1376.0,
+      "speed": 2.346,
+      "label": "финал · вечер в мире",
+      "chapter": "ФИНАЛ",
+      "flex": true,
+      "camera": {
+        "type": "drift",
+        "zoom": 1.07,
+        "amp": 0.018,
+        "freq": 0.1
+      },
+      "trans_in": "whip",
+      "overlays": [
+        {
+          "type": "caption",
+          "text": "спасибо за просмотр",
+          "local": 2.0,
+          "dur": 2.6,
+          "color": "brand",
+          "align": "center",
+          "y": 900,
+          "size": 44
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.5
+        }
+      ],
+      "gain": 1.0,
+      "note": "",
+      "protected": false,
+      "start": 727.193,
+      "duration": 21.313
+    },
+    {
+      "id": "card_end",
+      "src": "card",
+      "in": 0.0,
+      "out": 2.6,
+      "speed": 1.0,
+      "label": "финальная карточка",
+      "chapter": "ФИНАЛ",
+      "flex": false,
+      "camera": null,
+      "trans_in": "none",
+      "gain": 1.0,
+      "protected": false,
+      "overlays": [
+        {
+          "type": "end_card",
+          "local": 0.0,
+          "dur": 2.6,
+          "title": "HoweMine",
+          "sub": "СПАСИБО ЗА ПРОСМОТР",
+          "foot": "сборка на продажу · обзор",
+          "bg": "still:A@22:30.0"
+        }
+      ],
+      "sfx": [
+        {
+          "sfx": "whoosh",
+          "local": 0.0,
+          "gain": 0.6
+        },
+        {
+          "sfx": "low_boom",
+          "local": 0.1,
+          "gain": 0.5
+        }
+      ],
+      "note": "финальная карточка 2.6 с",
+      "start": 748.506,
+      "duration": 2.6
+    }
+  ],
+  "sfx": [
+    {
+      "t": 0.0,
+      "sfx": "low_boom",
+      "gain": 0.9
+    },
+    {
+      "t": 0.0,
+      "sfx": "riser",
+      "gain": 0.35
+    },
+    {
+      "t": 1.5,
+      "sfx": "pop",
+      "gain": 0.8
+    },
+    {
+      "t": 2.6,
+      "sfx": "hit",
+      "gain": 0.85
+    },
+    {
+      "t": 2.6,
+      "sfx": "whoosh",
+      "gain": 0.5
+    },
+    {
+      "t": 9.15,
+      "sfx": "whoosh",
+      "gain": 0.7
+    },
+    {
+      "t": 9.65,
+      "sfx": "click",
+      "gain": 0.5
+    },
+    {
+      "t": 11.9,
+      "sfx": "whoosh",
+      "gain": 0.55
+    },
+    {
+      "t": 12.85,
+      "sfx": "click",
+      "gain": 0.4
+    },
+    {
+      "t": 30.043,
+      "sfx": "click",
+      "gain": 0.35
+    },
+    {
+      "t": 36.272,
+      "sfx": "whoosh",
+      "gain": 0.45
+    },
+    {
+      "t": 93.528,
+      "sfx": "whoosh",
+      "gain": 0.5
+    },
+    {
+      "t": 114.905,
+      "sfx": "whoosh",
+      "gain": 0.55
+    },
+    {
+      "t": 115.905,
+      "sfx": "click",
+      "gain": 0.45
+    },
+    {
+      "t": 134.87,
+      "sfx": "click",
+      "gain": 0.4
+    },
+    {
+      "t": 176.954,
+      "sfx": "ui_open",
+      "gain": 0.4
+    },
+    {
+      "t": 185.5,
+      "sfx": "whoosh",
+      "gain": 0.5
+    },
+    {
+      "t": 204.643,
+      "sfx": "click",
+      "gain": 0.4
+    },
+    {
+      "t": 237.357,
+      "sfx": "whoosh",
+      "gain": 0.45
+    },
+    {
+      "t": 238.557,
+      "sfx": "ui_open",
+      "gain": 0.5
+    },
+    {
+      "t": 319.397,
+      "sfx": "riser",
+      "gain": 0.7
+    },
+    {
+      "t": 320.897,
+      "sfx": "low_boom",
+      "gain": 0.9
+    },
+    {
+      "t": 333.997,
+      "sfx": "pop",
+      "gain": 0.8
+    },
+    {
+      "t": 334.597,
+      "sfx": "low_boom",
+      "gain": 0.7
+    },
+    {
+      "t": 345.397,
+      "sfx": "pop",
+      "gain": 0.7
+    },
+    {
+      "t": 345.797,
+      "sfx": "click",
+      "gain": 0.4
+    },
+    {
+      "t": 346.397,
+      "sfx": "whoosh",
+      "gain": 0.45
+    },
+    {
+      "t": 458.332,
+      "sfx": "whoosh",
+      "gain": 0.5
+    },
+    {
+      "t": 499.667,
+      "sfx": "whoosh",
+      "gain": 0.45
+    },
+    {
+      "t": 549.652,
+      "sfx": "whoosh",
+      "gain": 0.5
+    },
+    {
+      "t": 561.652,
+      "sfx": "pop",
+      "gain": 0.6
+    },
+    {
+      "t": 575.652,
+      "sfx": "click",
+      "gain": 0.4
+    },
+    {
+      "t": 597.652,
+      "sfx": "pop",
+      "gain": 0.6
+    },
+    {
+      "t": 625.652,
+      "sfx": "whoosh",
+      "gain": 0.5
+    },
+    {
+      "t": 627.052,
+      "sfx": "tick",
+      "gain": 0.35
+    },
+    {
+      "t": 659.193,
+      "sfx": "hit",
+      "gain": 0.8
+    },
+    {
+      "t": 660.393,
+      "sfx": "low_boom",
+      "gain": 0.8
+    },
+    {
+      "t": 686.193,
+      "sfx": "hit",
+      "gain": 0.7
+    },
+    {
+      "t": 694.193,
+      "sfx": "low_boom",
+      "gain": 0.85
+    },
+    {
+      "t": 727.193,
+      "sfx": "whoosh",
+      "gain": 0.5
+    },
+    {
+      "t": 748.506,
+      "sfx": "whoosh",
+      "gain": 0.6
+    },
+    {
+      "t": 748.606,
+      "sfx": "low_boom",
+      "gain": 0.5
+    }
+  ],
+  "duck_windows": [
+    [
+      319.397,
+      345.397
+    ],
+    [
+      549.652,
+      625.652
+    ]
+  ],
+  "music_mute_windows": [
+    [
+      9.1,
+      11.899999999999999
+    ],
+    [
+      345.397,
+      346.397
+    ],
+    [
+      748.506,
+      751.106
+    ]
+  ],
+  "removed": []
+}

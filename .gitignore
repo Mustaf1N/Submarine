@@ -1,0 +1,21 @@
+# исходные записи (сотни МБ) — только ссылки в README
+raw/*
+!raw/README.md
+
+# рабочие артефакты рендера и кэш сегментов
+work/
+edit/cache/
+edit/analysis/*.npz
+tools/__pycache__/
+edit/ovl/
+edit/audio_build/
+*.log
+__pycache__/
+*.pyc
+_tmp/
+
+# видео: в git попадает только финальный файл (и он же — в GitHub Releases)
+*.mp4
+*.mkv
+*.m4a
+deliver/*.part*.mp4
