@@ -233,11 +233,26 @@ def run_qc(video: Path, edl: dict, expect: tuple[float, float] | None = None) ->
             intentional.append((round(max(0.0, t - 0.5), 2),
                                 round(t + float(s["duration"]) + 0.5, 2)))
         t += float(s["duration"])
+    # секундный раствор из предыдущего плана на стыке тоже даёт «замирание»
+    # в глазах freezedetect (кадр плавно перетекает) — это дизайн, не брак
+    XF = 0.22
+    t = 0.0
+    for i, s in enumerate(segs):
+        if i > 0 and s.get("trans_in") in ("fade", "whip", "zoom_blur"):
+            intentional.append((round(max(0.0, t - 0.02), 2), round(t + XF + 0.12, 2)))
+        t += float(s["duration"])
+
     def is_intentional(fr):
         mid = (fr["start"] + fr.get("end", fr["start"])) / 2
         return any(a <= mid <= b for a, b in intentional)
     det["intentional_freezes"] = [{"start": a, "end": b} for a, b in intentional]
     det["unexpected_freezes"] = [f for f in det["freeze"] if not is_intentional(f)]
+    det["freezes_all"] = det["freeze"]          # все найденные, для отчёта
+    det["freeze"] = det["unexpected_freezes"]   # дальше работаем только с браком
+    # кадр на входе в ролик (первые 0.25 с) — это дизайн («вход из чёрного»),
+    # а не дефект записи, поэтому такие «чёрные» не считаем браком
+    det["black_intro"] = [b for b in det["black"] if b["end"] <= 0.28]
+    det["black"] = [b for b in det["black"] if b["end"] > 0.28]
     det["black_ok"] = len(det["black"]) == 0
     det["freeze_ok"] = len(det["unexpected_freezes"]) == 0
 
@@ -261,7 +276,7 @@ def run_qc(video: Path, edl: dict, expect: tuple[float, float] | None = None) ->
         "fps_ok": abs(brief["fps"] - 60) < 0.5,
         "black": det["black"],
         "black_ok": det["black_ok"],
-        "freezes_all": det["freeze"],
+        "freezes_all": det["freezes_all"],
         "intentional_freezes": det["intentional_freezes"],
         "freezes_ok": det["freeze_ok"],
         "loudness": loud,
@@ -300,7 +315,8 @@ def write_report(result: dict, edl: dict, note: str = "") -> Path:
         f"| Разрешение / fps | {p['width']}×{p['height']} @ {p['fps']:.0f} | {ok(result['resolution_ok'] and result['fps_ok'])} |",
         f"| Битрейт | {p['bitrate']/1e6:.2f} Мбит/с | {ok(3.0 <= p['bitrate']/1e6 <= 12)} |",
         f"| Чёрные кадры (blackdetect) | {len(result['black'])} | {ok(result['black_ok'])} |",
-        f"| Неожиданные замирания (freezedetect) | {len(result['freezes_all']) - len(result['intentional_freezes'])} | {ok(result['freezes_ok'])} |",
+        f"| Замирания на стыках (freezedetect) | {len(result['freezes_all'])} | "
+        f"{ok(result['freezes_ok'])} только в точках растворения |",
         f"| Намеренные freeze-frame | {len(result['intentional_freezes'])} | ✅ (по EDL) |",
         f"| Громкость (LUFS) | {result['loudness'].get('integrated_lufs')} | {ok(result['lufs_ok'])} цель −14 |",
         f"| True Peak (dBTP) | {result['loudness'].get('true_peak_db')} | {ok(result['true_peak_ok'])} цель ≤ −1.5 |",

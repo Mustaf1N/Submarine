@@ -2,9 +2,9 @@
   "file": "/home/user/Submarine/deliver/HoweMine_review_1080p60.mp4",
   "probe": {
     "path": "/home/user/Submarine/deliver/HoweMine_review_1080p60.mp4",
-    "duration": 94.916667,
-    "size": 38251234,
-    "bitrate": 3223984,
+    "duration": 251.6,
+    "size": 103856404,
+    "bitrate": 3302270,
     "width": 1920,
     "height": 1080,
     "fps": 60.0,
@@ -14,8 +14,8 @@
   },
   "duration_ok": true,
   "duration_window": [
-    80.0,
-    110.0
+    230.0,
+    300.0
   ],
   "resolution_ok": true,
   "fps_ok": true,
@@ -23,61 +23,125 @@
   "black_ok": true,
   "freezes_all": [
     {
-      "start": 8.0,
-      "dur": 0.933333,
-      "end": 8.933333
+      "start": 8.783333,
+      "dur": 0.9,
+      "end": 9.683333
     },
     {
-      "start": 18.416667,
-      "dur": 0.733333,
-      "end": 19.15
+      "start": 97.083333,
+      "dur": 0.633333,
+      "end": 97.716667
     },
     {
-      "start": 94.0,
-      "dur": 0.5,
-      "end": 94.5
+      "start": 250.333333,
+      "dur": 0.8,
+      "end": 251.133333
     }
   ],
   "intentional_freezes": [
     {
-      "start": 6.07,
-      "end": 9.87
+      "start": 6.89,
+      "end": 10.69
     },
     {
-      "start": 17.76,
-      "end": 19.76
+      "start": 96.37,
+      "end": 98.37
     },
     {
-      "start": 91.78,
-      "end": 95.38
+      "start": 248.52,
+      "end": 252.12
+    },
+    {
+      "start": 0.46,
+      "end": 0.82
+    },
+    {
+      "start": 0.87,
+      "end": 1.23
+    },
+    {
+      "start": 10.17,
+      "end": 10.53
+    },
+    {
+      "start": 14.55,
+      "end": 14.91
+    },
+    {
+      "start": 29.62,
+      "end": 29.98
+    },
+    {
+      "start": 34.88,
+      "end": 35.24
+    },
+    {
+      "start": 49.98,
+      "end": 50.34
+    },
+    {
+      "start": 62.32,
+      "end": 62.68
+    },
+    {
+      "start": 87.93,
+      "end": 88.29
+    },
+    {
+      "start": 97.85,
+      "end": 98.21
+    },
+    {
+      "start": 118.43,
+      "end": 118.79
+    },
+    {
+      "start": 130.09,
+      "end": 130.45
+    },
+    {
+      "start": 145.19,
+      "end": 145.55
+    },
+    {
+      "start": 171.25,
+      "end": 171.61
+    },
+    {
+      "start": 180.4,
+      "end": 180.76
+    },
+    {
+      "start": 243.28,
+      "end": 243.64
     }
   ],
   "freezes_ok": true,
   "loudness": {
-    "integrated_lufs": -14.0,
-    "lra": 1.6,
+    "integrated_lufs": -13.9,
+    "lra": 1.2,
     "true_peak_ebur128": null,
-    "true_peak_db": -1.73
+    "true_peak_db": -1.66
   },
   "lufs_ok": true,
   "true_peak_ok": true,
   "sync": {
-    "video_duration": 94.917,
-    "audio_duration": 94.912,
-    "delta": -0.005,
+    "video_duration": 251.6,
+    "audio_duration": 251.6,
+    "delta": 0.0,
     "points": [
       {
-        "t": 4.745833350000001,
+        "t": 12.58,
         "video": true,
         "audio": true
       },
       {
-        "t": 47.4583335,
+        "t": 125.8,
         "video": true,
         "audio": true
       },
       {
-        "t": 91.916667,
+        "t": 248.6,
         "video": true,
         "audio": true
       }
@@ -85,35 +149,37 @@
   },
   "sync_ok": true,
   "contact_sheets": [
-    "/home/user/Submarine/edit/qc/contact_0-15_1-15.jpg"
+    "/home/user/Submarine/edit/qc/contact_0-15_3-45.jpg"
   ],
   "junction_sheets": [
-    "/home/user/Submarine/edit/qc/junctions/j002_0-06.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j003_0-09.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j005_0-10.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j006_0-10.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j007_0-11.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j009_0-12.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j010_0-12.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j012_0-13.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j013_0-14.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j014_0-14.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j015_0-15.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j016_0-15.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j018_0-17.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j019_0-18.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j020_0-19.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j022_0-20.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j023_0-21.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j025_0-22.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j028_0-23.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j029_0-25.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j030_0-25.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j031_0-26.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j035_1-20.jpg",
-    "/home/user/Submarine/edit/qc/junctions/j036_1-31.jpg"
+    "/home/user/Submarine/edit/qc/junctions/j000_0-00.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j001_0-00.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j002_0-07.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j003_0-10.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j005_0-14.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j006_0-25.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j007_0-29.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j009_0-34.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j010_0-37.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j012_0-48.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j013_0-49.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j014_0-53.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j015_0-58.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j016_1-02.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j018_1-27.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j019_1-36.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j020_1-37.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j022_1-51.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j023_1-58.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j025_2-10.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j028_2-25.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j029_2-51.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j030_2-55.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j031_3-00.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j035_3-52.jpg",
+    "/home/user/Submarine/edit/qc/junctions/j036_4-03.jpg"
   ],
   "boundaries_total": 38,
-  "boundaries_checked": 24,
+  "boundaries_checked": 26,
   "all_ok": true
 }

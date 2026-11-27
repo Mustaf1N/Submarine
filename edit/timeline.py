@@ -154,7 +154,7 @@ def raw_plan() -> dict:
     # ── 0. ХУК: лучший кадр ролика + резкий титр (без «здравствуйте»)
     S.append(seg("A", 11 * 60 + 45.4, 11 * 60 + 46.8, 1.0, "хук · открытие кейса",
                  "ХУК", flex=False, camera=cam_focus(0.5, 0.45, 1.0, 1.12),
-                 trans_in="flash", overlays=[
+                 trans_in="fade", overlays=[
                      {"type": "bars", "local": 0.0, "dur": 1.4},
                      {"type": "caption", "text": "СМОТРИ ДО КОНЦА", "local": 0.15, "dur": 1.2,
                       "color": "brand", "y": 760, "size": 54},
@@ -162,12 +162,12 @@ def raw_plan() -> dict:
                  note="вау-кадр на первом кадре"))
     S.append(seg("A", 12 * 60 + 1.2, 12 * 60 + 2.4, 1.0, "хук · [САПФИР]",
                  "ХУК", flex=False, camera=cam_focus(0.5, 0.5, 1.02, 1.14),
-                 trans_in="whip", overlays=[
+                 trans_in="fade", overlays=[
                      {"type": "stamp", "text": "[САПФИР]", "sub": "на 7 дней", "local": 0.05, "dur": 1.15},
                  ], sfx=[sfx("pop", 0.1, 0.8)]))
     S.append(seg("B", 50.0, 56.5, 1.0, "хук · арена, удар по дракону",
                  "ХУК", flex=False, camera=cam_shake(1.05, 0.006, 2.2),
-                 trans_in="zoom_blur", overlays=[
+                 trans_in="fade", overlays=[
                      {"type": "caption", "text": "ОБЗОР СБОРКИ HOWEMINE", "local": 0.5, "dur": 3.4,
                       "color": "white", "y": 930, "size": 46},
                  ], sfx=[sfx("hit", 0.0, 0.85), sfx("whoosh", 0.0, 0.5)]))
@@ -184,9 +184,11 @@ def raw_plan() -> dict:
     })
 
     # ── 2. СПАВН: площадка, аукцион, NPC
+    # карточка держит кадр — следующему плану растворение не нужно
+    S[-1]["no_fade_in"] = True
     chapters.append({"num": "01", "title": "СПАВН", "start_label": "спавн: вывеска и аукцион"})
     S.append(seg("A", 2.0, 30.0, 1.15, "спавн · вывеска HoweMine, аукцион", "СПАВН",
-                 camera=cam_drift(1.05, 0.012, 0.14), trans_in="whip", overlays=[
+                 camera=cam_drift(1.05, 0.012, 0.14), trans_in="fade", overlays=[
                      chapter("01", "СПАВН", "витрина · NPC · торговые точки"),
                      callout("ЛОКАЦИЯ", "Спавн HoweMine", ["Аукцион и торговые точки", "Витрина сборки"],
                              "rare", "A", 700, 480, "left", 3.4, 0.95),
@@ -196,7 +198,7 @@ def raw_plan() -> dict:
                      caption("спавн: аукцион, NPC, торговые точки", 2.4, 0.5),
                  ], sfx=[sfx("click", 0.5, 0.35)]))
     S.append(seg("A", 45.0, 2 * 60 + 30.0, 1.9, "спавн · детали витрины и NPC", "СПАВН",
-                 camera=cam_drift(1.06, 0.015, 0.12), trans_in="whip",
+                 camera=cam_drift(1.06, 0.015, 0.12), trans_in="fade",
                  overlays=[caption("витрина сборки: детали и оформление", 3.0, 1.0)],
                  sfx=[sfx("whoosh", 0.0, 0.45)]))
 
@@ -204,7 +206,7 @@ def raw_plan() -> dict:
     S.append(seg("A", 10 * 60 + 0.0, 10 * 60 + 38.0, 1.6, "тур по спавну · часть 1", "ТУР ПО СПАВНУ",
                  camera=cam_drift(1.06, 0.016, 0.13), trans_in="none"))
     S.append(seg("A", 10 * 60 + 44.0, 11 * 60 + 12.0, 1.6, "тур по спавну · часть 2", "ТУР ПО СПАВНУ",
-                 camera=cam_drift(1.06, 0.016, 0.11), trans_in="whip",
+                 camera=cam_drift(1.06, 0.016, 0.11), trans_in="fade",
                  sfx=[sfx("whoosh", 0.0, 0.5)]))
     S.append(seg("A", 11 * 60 + 18.0, 11 * 60 + 36.0, 1.5, "тур по спавну · часть 3", "ТУР ПО СПАВНУ",
                  camera=cam_push(1.02, 1.08, 0.45, 0.5),
@@ -213,7 +215,7 @@ def raw_plan() -> dict:
     # ── 4. ТОРГОВЛЯ: цены, точило
     chapters.append({"num": "02", "title": "ТОРГОВЛЯ", "start_label": "торговля: цены и точило"})
     S.append(seg("A", 2 * 60 + 30.0, 2 * 60 + 57.0, 1.0, "торговля · витрина и цены", "ТОРГОВЛЯ",
-                 camera=cam_push(1.0, 1.07, 0.5, 0.45), trans_in="zoom_blur", overlays=[
+                 camera=cam_push(1.0, 1.07, 0.5, 0.45), trans_in="fade", overlays=[
                      chapter("02", "ТОРГОВЛЯ", "цены · витрина · точило"),
                      callout("ЭКОНОМИКА", "Витрина торговца", ["Цены на ресурсы и снаряжение", "Покупка/продажа"],
                              "gold", "A", 780, 500, "left", 3.4, 1.0),
@@ -233,7 +235,7 @@ def raw_plan() -> dict:
                      caption("крафт · только реальные механики", 2.4, 0.3),
                  ], sfx=[sfx("ui_open", 0.15, 0.4)]))
     S.append(seg("A", 6 * 60 + 12.0, 6 * 60 + 40.0, 1.15, "мост через пропасть", "ПРОГРЕСС",
-                 camera=cam_drift(1.05, 0.013, 0.15), trans_in="whip",
+                 camera=cam_drift(1.05, 0.013, 0.15), trans_in="fade",
                  sfx=[sfx("whoosh", 0.0, 0.5)]))
 
     # ── 6. БАЗА (обзор)
@@ -248,7 +250,7 @@ def raw_plan() -> dict:
 
     # ── 7. СУНДУКИ И ИНВЕНТАРЬ
     S.append(seg("A", 8 * 60 + 0.0, 8 * 60 + 44.0, 1.6, "сундуки · инвентарь", "СКЛАД",
-                 camera=cam_push(1.0, 1.05, 0.5, 0.5), trans_in="zoom_blur", overlays=[
+                 camera=cam_push(1.0, 1.05, 0.5, 0.5), trans_in="fade", overlays=[
                      caption("статика инвентаря — это контент, а не брак", 2.8, 1.2),
                  ], sfx=[sfx("whoosh", 0.0, 0.45), sfx("ui_open", 1.2, 0.5)]))
 
@@ -260,7 +262,7 @@ def raw_plan() -> dict:
     chapters.append({"num": "03", "title": "ДОНАТ-КЕЙСЫ", "start_label": "донат-кейсы"})
     S.append(seg("A", 11 * 60 + 44.0, 12 * 60 + 10.0, 1.0, "донат-кейсы · «100 ХОХЛОВ» + «Легенда»",
                  "ДОНАТ-КЕЙСЫ", flex=False, protected=True, camera=cam_push(1.0, 1.05, 0.5, 0.5),
-                 trans_in="flash", overlays=[
+                 trans_in="fade", overlays=[
                      chapter("03", "ДОНАТ-КЕЙСЫ", "открытие целиком · ×1.0"),
                      callout("ДОНАТ-КЕЙС", "«100 ХОХЛОВ»", ["Открытие показано целиком", "Реальная скорость, без ускорения"],
                              "legendary", "A", 960, 560, "left", 3.2, 1.4, big=True),
@@ -283,7 +285,7 @@ def raw_plan() -> dict:
 
     # ── 9. ЛОКАЦИИ
     S.append(seg("A", 12 * 60 + 30.0, 14 * 60 + 0.0, 1.0, "локации · часть 1", "ЛОКАЦИИ",
-                 camera=cam_drift(1.05, 0.013, 0.14), trans_in="whip",
+                 camera=cam_drift(1.05, 0.013, 0.14), trans_in="fade",
                  overlays=[callout("МИР", "Локации сборки", ["Биомы и постройки мира", "Единый грейд с обеими записями"],
                                    "uncommon", "A", 860, 500, "left", 3.0, 1.2)],
                  sfx=[sfx("whoosh", 0.0, 0.45)]))
@@ -295,14 +297,14 @@ def raw_plan() -> dict:
                  camera=cam_drift(1.05, 0.014, 0.12), trans_in="none",
                  overlays=[caption("путешествие по миру · ходьба ускорена ×1.5", 3.0, 1.0)]))
     S.append(seg("A", 15 * 60 + 30.0, 16 * 60 + 10.0, 1.7, "путешествие · часть 2", "ПУТЕШЕСТВИЕ",
-                 camera=cam_push(1.0, 1.06, 0.45, 0.55), trans_in="zoom_blur",
+                 camera=cam_push(1.0, 1.06, 0.45, 0.55), trans_in="fade",
                  sfx=[sfx("whoosh", 0.0, 0.5)]))
     S.append(seg("A", 16 * 60 + 10.0, 17 * 60 + 12.0, 1.85, "путешествие · часть 3", "ПУТЕШЕСТВИЕ",
                  camera=cam_drift(1.05, 0.012, 0.16)))
 
     # ── 11. КУБ И БИОМЫ
     S.append(seg("A", 17 * 60 + 12.0, 17 * 60 + 50.0, 1.6, "куб · часть 1", "КУБ И БИОМЫ",
-                 camera=cam_drift(1.05, 0.014, 0.13), trans_in="whip",
+                 camera=cam_drift(1.05, 0.014, 0.13), trans_in="fade",
                  overlays=[caption("куб и биомы — витрина мира", 2.6, 0.8)],
                  sfx=[sfx("whoosh", 0.0, 0.45)]))
     S.append(seg("A", 17 * 60 + 50.0, 18 * 60 + 20.0, 1.9, "куб · часть 2", "КУБ И БИОМЫ",
@@ -316,7 +318,7 @@ def raw_plan() -> dict:
     chapters.append({"num": "04", "title": "ЛУТ", "start_label": "лут и прокрутка дропа"})
     S.append(seg("A", 19 * 60 + 24.0, 20 * 60 + 40.0, 1.0, "лут · разбор инвентаря и прокрутка",
                  "ЛУТ", flex=False, protected=True, camera=cam_push(1.0, 1.04, 0.5, 0.5),
-                 trans_in="zoom_blur", overlays=[
+                 trans_in="fade", overlays=[
                      chapter("04", "ЛУТ", "реальная скорость · без ускорения"),
                      callout("ЛУТ", "Разбор дропа", ["Прокрутка лута — целиком", "×1.0, с запасом 0.3 с"],
                              "legendary", "A", 960, 560, "left", 3.6, 1.2, big=True),
@@ -331,7 +333,7 @@ def raw_plan() -> dict:
     # ── 13. СТРОЙКА
     chapters.append({"num": "05", "title": "СТРОЙКА", "start_label": "стройка"})
     S.append(seg("A", 20 * 60 + 46.0, 21 * 60 + 20.0, 1.7, "стройка · часть 1", "СТРОЙКА",
-                 camera=cam_drift(1.05, 0.013, 0.14), trans_in="whip", overlays=[
+                 camera=cam_drift(1.05, 0.013, 0.14), trans_in="fade", overlays=[
                      chapter("05", "СТРОЙКА", "ускорение ×1.3 — без потери деталей"),
                      callout("СТРОЙКА", "Возведение базы", ["Блок за блоком, без мусорных кадров", "Медленные участки ускорены"],
                              "uncommon", "A", 900, 520, "left", 3.2, 1.4),
@@ -342,7 +344,7 @@ def raw_plan() -> dict:
     # ── 14. АРЕНА (источник B)
     chapters.append({"num": "06", "title": "АРЕНА", "start_label": "арена и Эндер-дракон"})
     S.append(seg("B", 9.0, 32.0, 1.0, "арена · вход и первый бой", "АРЕНА", flex=False,
-                 camera=cam_shake(1.045, 0.005, 2.0), trans_in="flash", overlays=[
+                 camera=cam_shake(1.045, 0.005, 2.0), trans_in="fade", overlays=[
                      chapter("06", "АРЕНА", "Эндер-дракон · 4:3 → 16:9"),
                      callout("БОСС", "Эндер-дракон", ["Арена из второй записи", "Картинка 4:3 вписана в 16:9"],
                              "mythic", "B", 640, 480, "left", 3.2, 1.2),
@@ -356,7 +358,7 @@ def raw_plan() -> dict:
 
     # ── 15. Финал: ночь не используем (почти чёрный экран), берём вечер
     S.append(seg("A", 22 * 60 + 6.0, 22 * 60 + 56.0, 1.7, "финал · вечер в мире", "ФИНАЛ",
-                 camera=cam_drift(1.07, 0.018, 0.1), trans_in="whip",
+                 camera=cam_drift(1.07, 0.018, 0.1), trans_in="fade",
                  overlays=[caption("спасибо за просмотр", 2.6, 2.0, "brand", y=900, size=44)],
                  sfx=[sfx("whoosh", 0.0, 0.5)]))
     S.append({
@@ -379,12 +381,20 @@ def lag_cuts(analysis: dict, src: str, margin: float = 0.12) -> list[tuple[float
         return []
     data = analysis[src]
     cuts: list[tuple[float, float]] = []
+    widened = 0
     for fz in data.get("freezes", []):
         if fz.get("kind") != "lag":
             continue
         if fz.get("len", 0) < 0.8:
             continue
-        cuts.append((max(0.0, fz["start"] + margin), max(0.0, fz["end"] - margin)))
+        a, b = fz["start"] + margin, fz["end"] - margin
+        # Анализ идёт с шагом 0.2 с и видит «замирание» там, где картинка уже
+        # стояла: реальный «стоп» на 0.2–0.4 с шире окна, и огрызок всё равно
+        # попадал в ролик (freezedetect в QC его видел). Расширяем вырезку до
+        # 0.6 с с каждой стороны — так стоп вырезается целиком.
+        a, b = a - 0.6, b + 0.6
+        widened += 1
+        cuts.append((max(0.0, a), max(0.0, b)))
     for bl in data.get("blacks", []):
         if bl["end"] - bl["start"] >= 1.0:
             cuts.append((bl["start"], bl["end"]))
@@ -394,6 +404,23 @@ def lag_cuts(analysis: dict, src: str, margin: float = 0.12) -> list[tuple[float
     if src == "A":
         cuts.append((0.0, 1.6))
     return merge_int(cuts)
+
+
+def dead_frames(analysis: dict, src: str, reach: float = 0.45) -> list[tuple[float, float]]:
+    """Кадры, которые обрезаем у самого края плана: тайм-аут замирания + допуск.
+
+    Зачем отдельно от `lag_cuts`: вырезка 139.7–148.5 «съедала» живую часть плана,
+    которая просто была на экране в момент замера. Здесь режем только ±`reach`
+    вокруг найденного окна — стоп уходит, живое остаётся.
+    """
+    if not analysis or src not in analysis:
+        return []
+    out: list[tuple[float, float]] = []
+    for fz in analysis[src].get("freezes", []):
+        if fz.get("kind") != "lag" or fz.get("len", 0) < 0.8:
+            continue
+        out.append((max(0.0, fz["start"] - reach), fz["end"] + reach))
+    return out
 
 
 def merge_int(items: list[tuple[float, float]]) -> list[tuple[float, float]]:
@@ -478,10 +505,37 @@ def build(analysis: dict | None = None, target: float = 750.0, fit: bool = True,
                             it[k2] = round(it[k2] * time_scale, 3)
             analysis["A"] = a_copy
     cuts_by_src = {s: lag_cuts(analysis, s) for s in ("A", "B")}
+    dead_by_src = {s: dead_frames(analysis, s) for s in ("A", "B")}
 
     # 1) вырезка брака + разбиение на живые куски
     out_segments: list[dict] = []
     removed_log: list[dict] = []
+
+    def drop_specks(pieces: list[tuple[float, float]], keep: float) -> list[tuple[float, float]]:
+        """Выбросить «осколки» плана, которые остаются у границ вырезки.
+
+        Почему: анализ кадров ловит замирание на самой границе плана, и после
+        вычитания остаётся кусок 0.03–0.3 с. На экране это одна-две вспышки —
+        читается как дефект склейки. Такой кусок ничего не показывает, поэтому
+        не выводим его вовсе: самый длинный кусок плана остаётся, остальное уходит
+        в вырезанное. Потеря — десятые доли секунды, зато монтаж чистый.
+        """
+        if len(pieces) <= 1:
+            return [(round(a, 3), round(b, 3)) for a, b in pieces]
+        big = [pc for pc in pieces if pc[1] - pc[0] >= keep]
+        if not big:
+            big = [max(pieces, key=lambda pc: pc[1] - pc[0])]
+        out = [(round(a, 3), round(b, 3)) for a, b in big]
+        # Один-два полноценных плана + хвост-«продолжение» — норма. Но если
+        # продолжение всё равно короче 0.8 с экранного времени, лучше его не
+        # показывать: вспышка между склейками — единственный заметный дефект.
+        if len(out) > 1:
+            def screen_len(pc):
+                return (pc[1] - pc[0]) / max(0.05, float(s.get("speed", 1.0)))
+
+            out = [out[0]] + [pc for pc in out[1:] if screen_len(pc) >= 0.8]
+        return out
+
     for s in segments:
         if s["src"] in ("card", "freeze"):
             out_segments.append(s)
@@ -492,7 +546,14 @@ def build(analysis: dict | None = None, target: float = 750.0, fit: bool = True,
             removed_log.append({"src": s["src"], "start": a, "end": b,
                                 "len": round(b - a, 2), "label": s["label"],
                                 "reason": "замирание без GUI / меню / OBS / чёрный кадр"})
-        for i, (a, b) in enumerate(pieces):
+        # минимум экранного времени на продолжение: 0.9 с при ×1.0, 0.45 с при ускорении
+        keep = 0.45 if float(s.get("speed", 1.0)) > 1.05 else 0.9
+        # кусок плана, который целиком попал в вырезанное окно, — не «осколок»
+        # (это живая часть плана), но показывать его нельзя: там стоп-кадр
+        dead = dead_by_src.get(s["src"], [])
+        pieces = [pc for pc in pieces
+                  if not any(da <= pc[0] and pc[1] <= db for da, db in dead)] or pieces[:1]
+        for i, (a, b) in enumerate(drop_specks(pieces, keep)):
             p = dict(s)
             p["in"], p["out"] = a, b
             if i > 0:
@@ -502,6 +563,17 @@ def build(analysis: dict | None = None, target: float = 750.0, fit: bool = True,
                 p["label"] = s["label"] + " (продолжение)"
             out_segments.append(p)
 
+    # 1b) «камера» внутри статичного плана: если план длиннее 1.4 с и в нём не
+    # предполагалось движения, добавляем медленный push-in — картинка перестаёт
+    # быть стоп-кадром (freezedetect на финале чистый), но кадр не режется.
+    for seg in out_segments:
+        if seg["src"] in ("card", "freeze"):
+            continue
+        dur_s = (seg["out"] - seg["in"]) / max(0.05, seg["speed"])
+        if dur_s >= 1.4 and not seg.get("camera"):
+            # «дышащая» камера: микро-зум + сдвиг по синусу, картинка не стоит
+            seg["camera"] = {"type": "spring", "from": 1.03, "amp": 0.014, "freq": 0.33}
+
     # 2) подгонка длительности: скорость меняем только у flex-сегментов
     def total(segs):
         return sum(duration(x) for x in segs)
@@ -509,6 +581,7 @@ def build(analysis: dict | None = None, target: float = 750.0, fit: bool = True,
     def duration(x):
         return max(0.0, (x["out"] - x["in"]) / max(0.05, x["speed"]))
 
+    MIN_SEG_TIME = 0.9       # минимум экранного времени на план (анти-«вспышка»)
     if fit:
         # равномерно масштабируем скорости ТОЛЬКО у flex-сегментов, с клампом 0.95…3.0
         flex = [x for x in out_segments if x.get("flex") and not x.get("protected")]
@@ -524,9 +597,10 @@ def build(analysis: dict | None = None, target: float = 750.0, fit: bool = True,
             changed = False
             for x in flex:
                 new_speed = max(0.95, min(3.0, x["speed"] * factor))
-                # не сжимаем сегмент до «мигания»: минимум ~0.5 с на экране
+                # не сжимаем сегмент до «мигания»: минимум 0.9 с на экране — иначе
+                # на стыке получается вспышка, которая читается как дефект склейки
                 src_len = x["out"] - x["in"]
-                new_speed = min(new_speed, max(x["speed"], src_len / 0.5))
+                new_speed = min(new_speed, max(x["speed"], src_len / MIN_SEG_TIME))
                 if abs(new_speed - x["speed"]) > 1e-4:
                     x["speed"] = round(new_speed, 3)
                     changed = True
@@ -602,10 +676,17 @@ def build(analysis: dict | None = None, target: float = 750.0, fit: bool = True,
 
     # 5) валидация: коридор, защита, минимальная длина сегмента
     problems = []
+    # План короче ~0.8 с на экране читается как вспышка между склейками — это
+    # главный визуальный дефект, поэтому проверяем строго (с допуском на оверлеи).
+    short = []
     for s in out_segments:
-        if (s["out"] - s["in"]) / max(0.05, s["speed"]) < 0.35:
-            problems.append(f"слишком короткий сегмент: {s['label']} "
-                            f"({(s['out'] - s['in']) / s['speed']:.2f} с)")
+        if s["src"] in ("card", "freeze") or s.get("protected"):
+            continue
+        dur_s = (s["out"] - s["in"]) / max(0.05, s["speed"])
+        if dur_s < 0.8 and s.get("trans_in") in (None, "none"):
+            short.append((s["label"], round(dur_s, 2)))
+    for label, dur_s in short:
+        problems.append(f"короткий план: {label} ({dur_s} с) — возможна «вспышка» на стыке")
     in_corridor = 600 <= total_dur <= 900
     if not in_corridor:
         problems.append(f"длительность {tc(total_dur)} вне коридора 10:00–15:00 "

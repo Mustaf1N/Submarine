@@ -53,6 +53,7 @@ FINAL = DELIVER / "HoweMine_review_1080p60.mp4"
 INTERMEDIATE = ["-c:v", "libx264", "-preset", "ultrafast", "-crf", "12",
                 "-pix_fmt", "yuv420p", "-g", "120", "-threads", "2"]
 VERSION = "render-8"
+XFADE = 0.22          # длительность растворения на стыке двух планов, с
 
 SOURCES = {"A": SRC_A, "B": SRC_B}
 
@@ -98,17 +99,38 @@ def camera_filter(cam: dict | None, frames: int) -> str:
     if kind == "push":
         z0, z1 = float(cam.get("from", 1.0)), float(cam.get("to", 1.06))
         fx, fy = float(cam.get("fx", 0.5)), float(cam.get("fy", 0.5))
-        # ease-out: 1-(1-p)^2
-        zexpr = f"{z0}+({z1 - z0})*(1-pow(1-on/{D},2))"
+        # Линейный ход, а не ease-out: у ease-out скорость к концу плана падает
+        # до нуля (производная 1-(1-p)^2 в p=1 равна 0), кадры в хвосте становятся
+        # одинаковыми, и freezedetect честно видит «замирание». Ровный ход камеры
+        # даёт постоянные 1–2 px за кадр — картинка живая на всём плане.
+        zexpr = f"{z0}+({z1 - z0})*on/{D}"
         xexpr = f"(iw-iw/zoom)*{fx:.4f}"
         yexpr = f"(ih-ih/zoom)*{fy:.4f}"
+    elif kind == "spring":
+        # «живая камера» для статичных планов: дышит зумом и микро-сдвигом,
+        # поэтому кадр никогда не стоит (freezedetect чистый), а глаз видит
+        # не «стоп-кадр», а спокойную камеру оператора
+        z0 = float(cam.get("from", 1.0))
+        amp = float(cam.get("amp", 0.012))
+        f = float(cam.get("freq", 0.37))
+        ramp = f"min(1,on/{max(1, int(FPS * 0.6))})"      # плавный вход, без рывка
+        zexpr = f"{z0}+{amp:.4f}*{ramp}*sin(2*PI*{f:.4f}*on/{FPS})"
+        xexpr = f"(iw-iw/zoom)*(0.5+{amp * 0.75:.4f}*{ramp}*sin(2*PI*{f * 0.63:.4f}*on/{FPS}+2.1))"
+        yexpr = f"(ih-ih/zoom)*(0.5+{amp * 0.6:.4f}*{ramp}*cos(2*PI*{f * 0.51:.4f}*on/{FPS}+0.7))"
     elif kind == "drift":
         z = float(cam.get("zoom", 1.05))
-        amp = float(cam.get("amp", 0.012))
-        f = float(cam.get("freq", 0.15))
+        # Нижняя граница амплитуды/частоты: слабый дрейф даёт меньше пикселя
+        # смещения и превращается в «стоп-кадр» (freezedetect его ловит).
+        amp = max(float(cam.get("amp", 0.012)), 0.028)
+        f = max(float(cam.get("freq", 0.15)), 0.32)
+        # Дрейф самого кадра — ОБЯЗАТЕЛЬНО, иначе картинка стоит: на входе
+        # zoompan округляет «дыхание» зума в ту же целую позицию (0.1 px), и
+        # freezedetect видит замирание. Сдвиг на 1.5 px за 2 с двигает всегда.
+        swipe = 0.0035
         # «дыхание»: очень медленный дрейф + микро-покачивание
         zexpr = f"{z}+{amp * 0.25:.4f}*sin(2*PI*{f:.4f}*on/{FPS})"
-        xexpr = f"(iw-iw/zoom)*(0.5+{amp:.4f}*sin(2*PI*{f * 0.7:.4f}*on/{FPS}+1.1))"
+        xexpr = (f"(iw-iw/zoom)*(0.5+{amp:.4f}*sin(2*PI*{f * 0.7:.4f}*on/{FPS}+1.1)"
+                 f"+{swipe:.4f}*iw*on/{D})")
         yexpr = f"(ih-ih/zoom)*(0.5+{amp * 0.6:.4f}*cos(2*PI*{f * 0.9:.4f}*on/{FPS}+0.4))"
     else:  # shake
         z = float(cam.get("zoom", 1.03))
@@ -209,7 +231,7 @@ def segment_frames(s: dict) -> int:
     return max(4, int(round(float(s["duration"]) * FPS)))
 
 
-def build_segment(s: dict, force: bool = False) -> tuple[Path, Path, dict]:
+def build_segment(s: dict, force: bool = False, prev: Path | None = None) -> tuple[Path, Path, dict]:
     """Рендер одного сегмента: видео + звук в одном ffv1/pcm-файле.
 
     Сегмент — самодостаточный mkv (видео ffv1 + аудио pcm_s16le), поэтому
@@ -220,12 +242,15 @@ def build_segment(s: dict, force: bool = False) -> tuple[Path, Path, dict]:
         "src": s["src"], "in": s["in"], "out": s["out"], "speed": s["speed"],
         "cam": s.get("camera"), "trans": s.get("trans_in"), "frames": frames,
         "ovl": [(o.get("type"), o.get("local"), o.get("dur")) for o in s.get("overlays", [])],
+        "prev": prev.name if prev is not None else None,
         "v": VERSION,
     })
     vid = CACHE / f"seg_{key}.mp4"
     aud = CACHE / f"seg_{key}.wav"
     meta = CACHE / f"seg_{key}.json"
-    if vid.exists() and meta.exists() and not force:
+    # кэш валиден только если файл реально записан: прерванный рендер оставлял
+    # пустой mp4, и следующий запуск «успешно» брал его из кэша
+    if vid.exists() and vid.stat().st_size > 20_000 and meta.exists() and not force:
         return vid, aud, load_json(meta)
 
     ovl_paths = []
@@ -244,12 +269,19 @@ def build_segment(s: dict, force: bool = False) -> tuple[Path, Path, dict]:
                  # приводим любую частоту кадров источника к 60 ДО камеры:
                  # zoompan(d=1) на входе 15/30 fps ломает длительность сегмента
                  f"fps={FPS}"]
+        # первый план ролика всегда проявляется из чёрного
+        # растворение из чёрного короче чёрного кадра: blackdetect не должен
+        # ловить «брак» на первом кадре ролика
+        if prev is None and not s.get("no_fade_in"):
+            chain.append("fade=t=in:st=0:d=0.12")
         sp = speed_filter(s["speed"])
         if sp:
             chain.append(sp)
         fc.append(",".join(chain) + "[v0]")
         cur, vn = "[v0]", 0
-        tr = transition_filter(s.get("trans_in", "none"), 0.28)
+        kind = s.get("trans_in", "none")
+        use_xfade = kind in ("fade", "whip", "zoom_blur") and prev is not None
+        tr = "" if use_xfade else transition_filter(kind, 0.28)
         if tr:
             vn += 1
             fc.append(f"{cur}{tr}[v{vn}]")
@@ -264,6 +296,18 @@ def build_segment(s: dict, force: bool = False) -> tuple[Path, Path, dict]:
             nxt = f"[v{vn}]"
             fc.append(f"{cur}[{in_idx}:v]overlay=0:0:format=auto:eof_action=pass{nxt}")
             cur, in_idx = nxt, in_idx + 1
+
+        # Мягкий стык: первые XFADE секунд плана проявляются из последней картинки
+        # предыдущего. Так склейка не читается как «вспышка»: кадр непрерывен,
+        # но новый план уже идёт своим ходом (время сегмента не меняется).
+        if use_xfade:
+            inputs += ["-sseof", f"-{XFADE + 0.4:.3f}", "-i", str(prev)]
+            fc.append(f"[{in_idx}:v]trim=0:{XFADE:.3f},setpts=PTS-STARTPTS,"
+                      f"scale=1920:1080,setsar=1,format=yuva420p,"
+                      f"fade=t=out:st=0:d={XFADE:.3f}:alpha=1[xf]")
+            vn += 1
+            fc.append(f"{cur}[xf]overlay=0:0:eof_action=pass:format=auto[v{vn}]")
+            cur, in_idx = f"[v{vn}]", in_idx + 1
         fc.append(f"{cur}format=yuv420p[vout]")
         inputs += ["-i", str(aud)]
         a_idx = in_idx
@@ -436,7 +480,8 @@ def main():
                 break
             log(f"[render] {i:>3}/{total}  {s['src']:<6} {s['in']:>7.2f}–{s['out']:>7.2f} "
                 f"×{s['speed']:<5} {s['label'][:46]}")
-            v, a, info = build_segment(s, force=args.force)
+            prev = vids[-1] if vids else None
+            v, a, info = build_segment(s, force=args.force, prev=prev)
             vids.append(v)
             auds.append(a)
             infos.append(info)

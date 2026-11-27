@@ -1,0 +1,23 @@
+{
+  "title": "HoweMine — обзор сборки (1080p60)",
+  "video": "HoweMine_review_1080p60.mp4",
+  "total_size_mb": 103.9,
+  "parts": [
+    {
+      "name": "HoweMine_review_1080p60_part00.mp4",
+      "size": 56394698,
+      "size_mb": 56.39,
+      "sha256": "945f471b413ab27a4df0a6847a836a562b955260e8ffcfbd98d0e783f18810d6",
+      "duration": 126.02,
+      "url": "https://www.dropbox.com/scl/fi/wf9knstyiedba5dd4dc2u/HoweMine_review_1080p60_part00.mp4?rlkey=dkhhwjq0li3hs3w1z1cepmd5m&dl=1"
+    },
+    {
+      "name": "HoweMine_review_1080p60_part01.mp4",
+      "size": 47463150,
+      "size_mb": 47.46,
+      "sha256": "b5280848214784e6a2703cdff18a9a5256ef4189b1ada1f92078eae866502498",
+      "duration": 125.6,
+      "url": "https://www.dropbox.com/scl/fi/ajk2isz7uqvkinqz7rpna/HoweMine_review_1080p60_part01.mp4?rlkey=1eva5ox7zhj4eocsrey0dth7w&dl=1"
+    }
+  ]
+}

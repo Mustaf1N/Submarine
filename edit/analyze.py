@@ -42,41 +42,82 @@ CHAT_T = 0.25
 
 # ─────────────────────────────── извлечение ───────────────────────────────
 def extract_small(path: Path, fps: float = 1 / STEP) -> np.ndarray:
-    """Мелкая копия всего источника: (N, H, W, 3) uint8."""
+    """Мелкая копия всего источника: (N, H, W, 3) uint8.
+
+    Читаем потоком, а не через `subprocess.run(stdout=PIPE)`: на 20-минутной
+    записи буфер занимал ~1.5 ГБ и процесс убивался OOM. Здесь кадры сразу
+    пишутся в заранее выделенный массив, лишнего в памяти не оседает.
+    """
+    frame_bytes = SMALL_W * SMALL_H * 3
+    dur = float(probe_brief(path)["duration"] or 0.0)
+    n_max = int(dur * fps) + 8
+    out = np.empty((n_max, SMALL_H, SMALL_W, 3), dtype=np.uint8)
     cmd = [
         FFMPEG, "-hide_banner", "-nostdin", "-v", "error", "-i", str(path),
         "-vf", f"fps={fps},scale={SMALL_W}:{SMALL_H}:flags=area",
         "-f", "rawvideo", "-pix_fmt", "rgb24", "-",
     ]
-    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    if proc.returncode != 0:
-        raise RuntimeError(f"ffmpeg не смог прочитать {path}:\n{proc.stderr.decode()[-1500:]}")
-    buf = np.frombuffer(proc.stdout, dtype=np.uint8)
-    n = len(buf) // (SMALL_W * SMALL_H * 3)
-    return buf[: n * SMALL_W * SMALL_H * 3].reshape(n, SMALL_H, SMALL_W, 3)
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    n = 0
+    assert proc.stdout is not None
+    while n < n_max:
+        buf = proc.stdout.read(frame_bytes)
+        if len(buf) < frame_bytes:
+            break
+        out[n] = np.frombuffer(buf, dtype=np.uint8).reshape(SMALL_H, SMALL_W, 3)
+        n += 1
+    proc.stdout.close()
+    err = proc.stderr.read().decode() if proc.stderr else ""
+    rc = proc.wait()
+    if rc != 0 and n == 0:
+        raise RuntimeError(f"ffmpeg не смог прочитать {path}:\n{err[-1500:]}")
+    return out[:n]
 
 
-def frame_metrics(frames: np.ndarray) -> dict:
-    f = frames.astype(np.float32)
-    luma = 0.2126 * f[..., 0] + 0.7152 * f[..., 1] + 0.0722 * f[..., 2]      # (N,H,W)
-    avg_luma = luma.reshape(len(f), -1).mean(axis=1)
-    std_luma = luma.reshape(len(f), -1).std(axis=1)
+def frame_metrics(frames: np.ndarray, chunk: int = 150) -> dict:
+    """Метрики по кадрам, посчитанные блоками.
 
-    # motion: средняя абс. разница с предыдущим кадром в мелком разрешении
-    d = np.abs(np.diff(luma, axis=0)).reshape(max(1, len(f) - 1), -1).mean(axis=1)
-    motion = np.concatenate([[0.0], d]) / 255.0
-
-    mx = f.max(axis=3)
-    mn = f.min(axis=3)
-    sat = (mx - mn) / np.maximum(1.0, mx)
-    light = (mn > 118) & (sat < 0.16)          # светлые серые панели GUI
-
+    Почему блоками: `astype(float32)` от всего массива (20-минутная запись,
+    ~2400 кадров 480×270) — это 3.7 ГБ и гарантированный OOM на слабой машине.
+    Считаем по 150 кадров и складываем только одномерные ряды метрик.
+    """
+    n = len(frames)
+    avg_luma = np.empty(n, dtype=np.float32)
+    std_luma = np.empty(n, dtype=np.float32)
+    gui_score = np.empty(n, dtype=np.float32)
+    chat_score = np.empty(n, dtype=np.float32)
+    motion = np.empty(n, dtype=np.float32)
     h, w = SMALL_H, SMALL_W
-    # light: (N, H, W) → берём центральную зону и нижне-левую (чат) по каждому кадру
-    center = light[:, int(h * 0.10):int(h * 0.80), int(w * 0.34):int(w * 0.66)]
-    chat = light[:, int(h * 0.55):int(h * 0.95), int(w * 0.01):int(w * 0.46)]
-    gui_score = center.reshape(center.shape[0], -1).mean(axis=1)
-    chat_score = chat.reshape(chat.shape[0], -1).mean(axis=1)
+    prev_last = None
+    for i in range(0, n, chunk):
+        block = frames[i:i + chunk]
+        f = block.astype(np.float32)
+        luma = 0.2126 * f[..., 0] + 0.7152 * f[..., 1] + 0.0722 * f[..., 2]   # (n,H,W)
+        avg_luma[i:i + len(block)] = luma.reshape(len(block), -1).mean(axis=1)
+        std_luma[i:i + len(block)] = luma.reshape(len(block), -1).std(axis=1)
+
+        mx = f.max(axis=3)
+        mn = f.min(axis=3)
+        sat = (mx - mn) / np.maximum(1.0, mx)
+        light = (mn > 118) & (sat < 0.16)          # светлые серые панели GUI
+        center = light[:, int(h * 0.10):int(h * 0.80), int(w * 0.34):int(w * 0.66)]
+        chat = light[:, int(h * 0.55):int(h * 0.95), int(w * 0.01):int(w * 0.46)]
+        gui_score[i:i + len(block)] = center.reshape(len(block), -1).mean(axis=1)
+        chat_score[i:i + len(block)] = chat.reshape(len(block), -1).mean(axis=1)
+
+        # движение внутри блока + стык с предыдущим блоком
+        d = np.abs(np.diff(luma, axis=0)).reshape(max(1, len(block) - 1), -1).mean(axis=1)
+        start = i
+        if prev_last is not None:
+            motion[start] = float(np.abs(luma[0] - prev_last).mean()) / 255.0
+            start += 1
+        else:
+            motion[start] = 0.0
+            start += 1
+        if len(d):
+            motion[start:start + len(d)] = d / 255.0
+        prev_last = luma[-1]
+        del f, luma, mx, mn, sat, light, center, chat, d
     return {
         "luma": avg_luma,
         "luma_std": std_luma,
