@@ -59,6 +59,7 @@ set "URL1=https://www.dropbox.com/scl/fi/wf9knstyiedba5dd4dc2u/HoweMine_review_1
 rem HoweMine_review_1080p60_part01.mp4: 47.46 МБ
 set "URL2=https://www.dropbox.com/scl/fi/ajk2isz7uqvkinqz7rpna/HoweMine_review_1080p60_part01.mp4?rlkey=1eva5ox7zhj4eocsrey0dth7w&dl=1"
 
+rem --- HoweMine_review_1080p60_part00.mp4 (56.39 МБ)
 if exist "HoweMine_review_1080p60_part00.mp4" goto have1
 echo       HoweMine_review_1080p60_part00.mp4 ...
 curl -L --retry 3 --retry-delay 2 -o "HoweMine_review_1080p60_part00.mp4" "%URL1%"
@@ -67,6 +68,19 @@ if not exist "HoweMine_review_1080p60_part00.mp4" (
     goto :fail
 )
 :have1
+for %%S in ("HoweMine_review_1080p60_part00.mp4") do if %%~zS LSS 1000000 (
+    echo       HoweMine_review_1080p60_part00.mp4 скачался не полностью.
+    echo       Удалите его из "%WORK%" и запустите файл снова.
+    goto :fail
+)
+powershell -NoProfile -Command "if ((Get-FileHash -Algorithm SHA256 'HoweMine_review_1080p60_part00.mp4').Hash -ne '945F471B413AB27A4DF0A6847A836A562B955260E8FFCFBD98D0E783F18810D6') { exit 1 }"
+if errorlevel 1 (
+    echo       HoweMine_review_1080p60_part00.mp4: хэш не совпал — файл удалён, запустите снова.
+    del /q "HoweMine_review_1080p60_part00.mp4"
+    goto :fail
+)
+echo       OK HoweMine_review_1080p60_part00.mp4
+rem --- HoweMine_review_1080p60_part01.mp4 (47.46 МБ)
 if exist "HoweMine_review_1080p60_part01.mp4" goto have2
 echo       HoweMine_review_1080p60_part01.mp4 ...
 curl -L --retry 3 --retry-delay 2 -o "HoweMine_review_1080p60_part01.mp4" "%URL2%"
@@ -75,20 +89,21 @@ if not exist "HoweMine_review_1080p60_part01.mp4" (
     goto :fail
 )
 :have2
-
-echo [4/5] Проверяю целостность файлов...
-powershell -NoProfile -Command "if ((Get-FileHash -Algorithm SHA256 'HoweMine_review_1080p60_part00.mp4').Hash -ne '945F471B413AB27A4DF0A6847A836A562B955260E8FFCFBD98D0E783F18810D6') { exit 1 }"
-if errorlevel 1 (
-    echo       HoweMine_review_1080p60_part00.mp4 повреждён: удалите его и запустите файл снова.
+for %%S in ("HoweMine_review_1080p60_part01.mp4") do if %%~zS LSS 1000000 (
+    echo       HoweMine_review_1080p60_part01.mp4 скачался не полностью.
+    echo       Удалите его из "%WORK%" и запустите файл снова.
     goto :fail
 )
-echo       OK HoweMine_review_1080p60_part00.mp4
 powershell -NoProfile -Command "if ((Get-FileHash -Algorithm SHA256 'HoweMine_review_1080p60_part01.mp4').Hash -ne 'B5280848214784E6A2703CDFF18A9A5256EF4189B1ADA1F92078EAE866502498') { exit 1 }"
 if errorlevel 1 (
-    echo       HoweMine_review_1080p60_part01.mp4 повреждён: удалите его и запустите файл снова.
+    echo       HoweMine_review_1080p60_part01.mp4: хэш не совпал — файл удалён, запустите снова.
+    del /q "HoweMine_review_1080p60_part01.mp4"
     goto :fail
 )
 echo       OK HoweMine_review_1080p60_part01.mp4
+
+echo [4/5] Проверяю целостность файлов...
+echo       все части на месте и совпадают по SHA-256
 
 echo [5/5] Собираю ролик (без перекодирования, качество не теряется)...
 (echo file '%WORK%\HoweMine_review_1080p60_part00.mp4')>join.txt

@@ -194,26 +194,33 @@ def write_bat(man: dict) -> Path:
         lines.append(f'set "URL{i}={f.get("url", "")}"')
     lines.append("")
     for i, f in enumerate(man["parts"], 1):
-        lines.append(f'if exist "{f["name"]}" goto have{i}')
-        lines.append(f'echo       {f["name"]} ...')
-        lines.append(f'curl -L --retry 3 --retry-delay 2 -o "{f["name"]}" "%URL{i}%"')
-        lines.append(f'if not exist "{f["name"]}" (')
-        lines.append(f'    echo       Не скачался {f["name"]}. Проверьте интернет и запустите снова.')
+        name, h = f["name"], f["sha256"].upper()
+        lines.append(f'rem --- {name} ({f["size_mb"]} МБ)')
+        lines.append(f'if exist "{name}" goto have{i}')
+        lines.append(f'echo       {name} ...')
+        lines.append(f'curl -L --retry 3 --retry-delay 2 -o "{name}" "%URL{i}%"')
+        lines.append(f'if not exist "{name}" (')
+        lines.append(f'    echo       Не скачался {name}. Проверьте интернет и запустите снова.')
         lines.append("    goto :fail")
         lines.append(")")
         lines.append(f":have{i}")
+        # Проверяем сразу: если вместо файла пришла HTML-страница Dropbox,
+        # размер будет крошечный — сообщаем понятно, а не «повреждён»
+        lines.append(f'for %%S in ("{name}") do if %%~zS LSS 1000000 (')
+        lines.append(f'    echo       {name} скачался не полностью.')
+        lines.append(f'    echo       Удалите его из "%WORK%" и запустите файл снова.')
+        lines.append("    goto :fail")
+        lines.append(")")
+        lines.append(f'powershell -NoProfile -Command "if ((Get-FileHash -Algorithm SHA256 '
+                     f"'{name}').Hash -ne '{h}') {{ exit 1 }}\"")
+        lines.append("if errorlevel 1 (")
+        lines.append(f'    echo       {name}: хэш не совпал — файл удалён, запустите снова.')
+        lines.append(f'    del /q "{name}"')
+        lines.append("    goto :fail")
+        lines.append(")")
+        lines.append(f'echo       OK {name}')
 
-    hashes = []
-    for f in man["parts"]:
-        h = f["sha256"].upper()
-        hashes.append(
-            f'powershell -NoProfile -Command "if ((Get-FileHash -Algorithm SHA256 '
-            f"'{f['name']}').Hash -ne '{h}') {{ exit 1 }}\"")
-        hashes.append("if errorlevel 1 (")
-        hashes.append(f'    echo       {f["name"]} повреждён: удалите его и запустите файл снова.')
-        hashes.append("    goto :fail")
-        hashes.append(")")
-        hashes.append(f'echo       OK {f["name"]}')
+    hashes = ["echo       все части на месте и совпадают по SHA-256"]
 
     listing = [f'(echo file \'%WORK%\\{man["parts"][0]["name"]}\')>join.txt']
     for f in man["parts"][1:]:

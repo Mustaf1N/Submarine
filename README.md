@@ -6,7 +6,7 @@
 
 > ## Готовое видео
 >
-> **Смотреть / скачать (один файл):**
+> **Смотреть / скачать (один файл, 104 МБ):**
 > [HoweMine_review_1080p60.mp4](https://www.dropbox.com/scl/fi/iuzhp63ks5nl9soqr66cu/HoweMine_review_1080p60.mp4?rlkey=9o8fm9k31nmgqrdeelgsnexk8&dl=1)
 > — 4:12, 1920×1080@60, H.264 High@4.2, AAC 256k, **−14.0 LUFS / TP −1.7 dBTP**.
 >
